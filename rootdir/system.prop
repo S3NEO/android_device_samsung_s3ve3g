@@ -1,0 +1,4 @@
+ # System.prop for s3ve3g
+ 
+ rild.libpath=/system/lib/libsec-ril.so
+ rild.libargs=-d /dev/smd0
