@@ -17,26 +17,213 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# System properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
+# System Properties
+-include $(LOCAL_PATH)/system_prop.mk
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.hw=1 \
-    debug.sf.hw=1 \
-    debug.mdpcomp.logs=0 \
-    persist.hwc.mdpcomp.enable=true
+# Screen density
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+# Dalvik VM config for 1356MB (1.5GB) RAM devices
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=128m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapmaxfree=8m
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
+
+# Audio
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+	audio_policy.msm8226
+    audio.primary.msm8226 \
+    audio.r_submix.default \
+    audio.usb.default
+
+PRODUCT_PACKAGES += \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    tinymix
+
+# Audio configuration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+
+# Camera
+PRODUCT_PACKAGES += \
+    libxml2
 
 # Charger
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
-# Filesystem management tools
+# CRDA
 PRODUCT_PACKAGES += \
-    make_ext4fs \
+    crda \
+    linville.key.pub.pem \
+    regdbdump \
+    regulatory.bin
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8226 \
+    gralloc.msm8226 \
+    hwcomposer.msm8226 \
+    memtrack.msm8226 \
+    liboverlay
+
+# Ebtables
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
+# Filesystem
+PRODUCT_PACKAGES += \
     e2fsck \
+    fibmap.f2fs \
+    fsck.f2fs \
+    make_ext4fs \
+    mkfs.f2fs \
+    resize2fs \
     setup_fs
+
+# IRSC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+
+# OMX
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
+
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8226
+
+# QRNG
+PRODUCT_PACKAGES += \
+    qrngd \
+    qrngp
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.ath3k.bt.sh \
+    init.crda.sh \
+    init.qcom.bt.sh \
+    init.qcom.coex.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.fm.sh \
+    init.qcom.modem_links.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.wifi.sh \
+    init.sec.boot.sh
+
+PRODUCT_PACKAGES += \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.qcom.ssr.sh \
+    init.qcom.syspart_fixup.sh \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.target.rc \
+	init.carrier.rc \
+    ueventd.qcom.rc
+
+# Thermal
+PRODUCT_PACKAGES += \
+    thermal-engine-8226.conf
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Wifi
+PRODUCT_PACKAGES += \
+    hostapd.accept \
+    hostapd.deny \
+    hostapd_default.conf
+
+PRODUCT_PACKAGES += \
+    p2p_supplicant_overlay.conf \
+    wpa_supplicant_overlay.conf
+
+PRODUCT_PACKAGES += \
+    WCNSS_qcom_wlan_factory_nv.bin
+
+PRODUCT_PACKAGES += \
+    libcurl \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    wcnss_service
+
+	PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+
+PRODUCT_PACKAGES += \
+    macloader
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
