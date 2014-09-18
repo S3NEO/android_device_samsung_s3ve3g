@@ -154,6 +154,7 @@ PRODUCT_PACKAGES += \
     init.sec.boot.sh
 
 PRODUCT_PACKAGES += \
+    fstab.qcom
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.rc \
