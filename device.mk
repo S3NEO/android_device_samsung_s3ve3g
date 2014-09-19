@@ -155,16 +155,19 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
+	init.carrier.rc \
+	init.mdm.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.rc \
     init.qcom.sh \
+	init.qcom.ril.sh \
     init.qcom.ssr.sh \
     init.qcom.syspart_fixup.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+	init.ril.rc \
     init.target.rc \
-	init.carrier.rc \
     ueventd.qcom.rc
 
 # Thermal
