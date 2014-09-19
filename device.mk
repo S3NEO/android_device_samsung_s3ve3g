@@ -44,7 +44,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
-	audio_policy.msm8226
+    audio_policy.msm8226 \
     audio.primary.msm8226 \
     audio.r_submix.default \
     audio.usb.default
@@ -198,7 +198,7 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     wcnss_service
 
-	PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
