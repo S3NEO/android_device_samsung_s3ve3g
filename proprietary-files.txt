@@ -25,8 +25,8 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Audio firmware
-etc/firmware/wcd9306_anc.bin
-etc/firmware/wcd9306_mbhc.bin
+etc/firmware/wcd9306/wcd9306_anc.bin
+etc/firmware/wcd9306/wcd9306_mbhc.bin
 
 # Bluetooth
 bin/btnvtool
@@ -139,8 +139,6 @@ etc/gps.conf
 etc/sap.conf
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
-vendor/lib/libalarmservice_jni.so
-vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 vendor/lib/liblocationservice.so
@@ -149,7 +147,7 @@ vendor/lib/liblocationservice.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/GLESv2_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libc2d30.so
@@ -164,11 +162,11 @@ vendor/lib/libsc-a3xx.so
 vendor/lib/libscale.so
 
 # Graphics firmware
-/etc/firmware/a300_pfp.fw
-/etc/firmware/a300_pm4.fw
-/etc/firmware/a330_pfp.fw
-/etc/firmware/a330_pm4.fw
-/vendor/lib/libmmrtpencoder.so
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
+etc/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw
+vendor/lib/libmmrtpencoder.so
 
 # Listen service
 vendor/lib/liblistenhardware.so
@@ -209,13 +207,10 @@ vendor/lib/libmm-abl-oem.so
 # Qualcomm framework
 bin/irsc_util
 vendor/lib/libdiag.so
-vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libqcci_legacy.so
-vendor/lib/libqdi.so
-vendor/lib/libqdp.so
 vendor/lib/libqmi.so
 vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_qmux.so
@@ -239,7 +234,6 @@ lib/libreference-ril.so
 lib/libsecril-client.so
 lib/libsec-ril.so
 lib/libril.so
-lib/vendor/libril-qcril-hook-oem
 
 # Sensors
 bin/sensors.qcom
