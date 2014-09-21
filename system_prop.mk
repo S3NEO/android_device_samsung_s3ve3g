@@ -11,7 +11,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.pcm.enable=true
 	
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.resampler.quality=255 \
+    af.resampler.quality=4 \
     lpa.decode=false \
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -89,8 +89,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.add_power_save=1
+    persist.data.netmgrd.qos.enable=false \
+    persist.radio.add_power_save=1 \
+    persist.radio.apm_sim_not_pwdn=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=false
