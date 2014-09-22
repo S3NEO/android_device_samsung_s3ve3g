@@ -78,6 +78,9 @@ persist.radio.add_power_save=1
 persist.radio.apm_sim_not_pwdn=1
 ro.use_data_netmgrd=false
 
+# SELinux
+ro.boot.selinux=permissive
+
 # Sensors
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
