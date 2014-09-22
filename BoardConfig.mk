@@ -75,7 +75,7 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardwa
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
-TARGET_KERNEL_SOURCE := kernel/samsung/msm8226
+TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := msm8226-sec_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8226-sec_s3ve3g_eur_defconfig
 
