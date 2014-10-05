@@ -47,7 +47,6 @@ lib/libmmcamera_interface.so
 lib/libmmcamera_wavelet_lib.so
 lib/libmmcamera2_stats_algorithm.so
 lib/libmmjpeg_interface.so
-lib/libmm-omxcore.so
 lib/libqomx_core.so
 vendor/lib/B08QT_libchromatix_imx175_common.so
 vendor/lib/B08QT_libchromatix_imx175_common_res0.so
