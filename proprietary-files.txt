@@ -236,6 +236,7 @@ lib/libril.so
 
 # Sensors
 bin/sensors.qcom
+lib/hw/sensors.msm8226.so
 vendor/lib/libsensor1.so
 etc/sensor_def_qcomdev.conf
 
@@ -258,3 +259,4 @@ lib/libqsap_sdk.so
 bin/bridgemgrd
 bin/ds_fmc_appd
 bin/port-bridge
+vendor/lib/libNimsWrap.so

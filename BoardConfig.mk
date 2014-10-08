@@ -54,6 +54,9 @@ BOARD_CHARGING_CMDLINE_VALUE := "true"
 # CMHW
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
+# Disable initlogo, Samsungs framebuffer is weird
+TARGET_NO_INITLOGO := true
+
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3

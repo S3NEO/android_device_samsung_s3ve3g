@@ -19,7 +19,7 @@
 
 <resources>
     <!-- Use ZSL mode for Qualcomm cameras -->
-    <bool name="enableZSL">false</bool>
+    <bool name="enableZSL">true</bool>
     <!-- Enable histogram support -->
     <bool name="enableHistogram">true</bool>
 </resources>
