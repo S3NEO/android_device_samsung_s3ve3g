@@ -54,7 +54,11 @@ on boot
     chmod 0664 /sys/class/sec/sec_touchkey/touch_sensitivity
    	chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
     chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
-	
+
+# Torch permission
+    chown system system /sys/class/leds/led:flash_torch/brightness
+    chmod 0664 /sys/class/leds/led:flash_torch/brightness
+
 # bluetooth LPM
 
 # bluetooth dhcp config

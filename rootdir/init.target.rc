@@ -31,6 +31,8 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware-modem 0771 system system
     symlink /data/tombstones /tombstones
+    mkdir /efs 0771 system radio
+    chmod 644 /proc/cmdline
 
 on fs
     mount_all fstab.qcom
@@ -40,19 +42,15 @@ on fs
     # results in failure to launch late-start class.
 
     wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    check_fs /dev/block/platform/msm_sdcc.1/by-name/cache ext4
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
 
     wait /dev/block/platform/msm_sdcc.1/by-name/persist
-    check_fs /dev/block/platform/msm_sdcc.1/by-name/persist ext4
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
 
     wait /dev/block/platform/msm_sdcc.1/by-name/efs
-    check_fs /dev/block/platform/msm_sdcc.1/by-name/efs ext4
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
     chown system radio /efs
     chmod 0771 /efs
-    restorecon -R /efs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
@@ -188,14 +186,15 @@ service wcnss-service /system/bin/wcnss_service
    group system wifi
    oneshot
 
-# service ppd /system/bin/mm-pp-daemon
-#     class late_start
-#     user system
-#     socket pps stream 0660 system system
-#     group system graphics
-# 
-# on property:init.svc.surfaceflinger=stopped
-#     stop ppd
+ service ppd /system/bin/mm-pp-daemon
+     class late_start
+     user system
+     socket pps stream 0660 system system
+     group system graphics
+ 
+ on property:init.svc.surfaceflinger=stopped
+     stop ppd
+
 # SecEDS
 service TvoutService_C /system/bin/bintvoutservice
      class main
