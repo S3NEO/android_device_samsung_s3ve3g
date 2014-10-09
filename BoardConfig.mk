@@ -59,7 +59,6 @@ TARGET_NO_INITLOGO := true
 
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_QCOM_DISPLAY_VARIANT := caf
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
@@ -71,6 +70,9 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
@@ -81,13 +83,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := msm8226-sec_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8226-sec_s3ve3g_eur_defconfig
-
-WLAN_MODULES:
-	mkdir -p $(KERNEL_MODULES_OUT)/pronto
-	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/pronto/pronto_wlan.ko
-	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
-
-TARGET_KERNEL_MODULES += WLAN_MODULES
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -138,12 +133,14 @@ BOARD_VOLD_MAX_PARTITIONS := 40
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Wifi
-BOARD_HAS_QCOM_WLAN := true
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME := "wlan"
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HAS_QCOM_WLAN              := true
+BOARD_HAS_QCOM_WLAN_SDK          := true
+BOARD_WLAN_DEVICE                := qcwcn
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+TARGET_USES_WCNSS_CTRL           := true
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
