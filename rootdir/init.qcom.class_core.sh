@@ -169,6 +169,25 @@ case "$target" in
                 ;;
         esac
         ;;
+
+    "msm8610" | "msm8974" | "msm8226")
+	case "$serial" in
+	     "0")
+		echo 0 > /sys/devices/f991f000.serial/console
+		;;
+	     "1")
+		echo 1 > /sys/devices/f991f000.serial/console
+		start console
+		;;
+            *)
+		case "$dserial" in
+                     "1")
+			start console
+			;;
+		esac
+		;;
+	esac
+	;;
     *)
         case "$dserial" in
             "1")
@@ -186,8 +205,23 @@ fake_batt_capacity=`getprop persist.bms.fake_batt_capacity`
 case "$fake_batt_capacity" in
     "") ;; #Do nothing here
     * )
-    echo "$fake_batt_capacity" > /sys/class/power_supply/battery/capacity
-    ;;
+    case $target in
+        "msm8960")
+        echo "$fake_batt_capacity" > /sys/module/pm8921_bms/parameters/bms_fake_battery
+        ;;
+
+	"msm8974")
+        echo "$fake_batt_capacity" > /sys/module/qpnp_bms/parameters/bms_fake_battery
+        ;;
+
+	"msm8226")
+        echo "$fake_batt_capacity" > /sys/class/power_supply/battery/capacity
+        ;;
+
+	"msm8610")
+        echo "$fake_batt_capacity" > /sys/module/qpnp_bms/parameters/bms_fake_battery
+        ;;
+    esac
 esac
 
 case "$target" in
