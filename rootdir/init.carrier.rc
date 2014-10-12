@@ -21,11 +21,11 @@ on boot
 # Permissions for TSP
     chown system system /sys/class/sec/tsp/cmd
     chown system system /sys/class/input/input1/enabled
-	chown system system /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input2/enabled
     chown system system /sys/class/sec/sec_touchkey/brightness
-	chmod 0664 /sys/class/sec/tsp/cmd
+    chmod 0664 /sys/class/sec/tsp/cmd
     chmod 0664 /sys/class/input/input1/enabled
-	chmod 0664 /sys/class/input/input2/enabled
+    chmod 0664 /sys/class/input/input2/enabled
     chmod 0664 /sys/class/sec/sec_touchkey/brightness
 	
 # Permission for touchkey	
@@ -41,16 +41,16 @@ on boot
     chown system system /sys/class/sec/sec_touchkey/touchkey_threshold
     chown system system /sys/devices/virtual/sec/sec_touchkey/brightness
     
-	chmod 0664 /sys/class/sec/sec_touchkey/touchkey_brightness
-   	chmod 0664 /sys/class/sec/sec_touchkey/touchkey_menu
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_brightness
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_menu
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_back
-   	chmod 0664 /sys/class/sec/sec_touchkey/touch_version
+    chmod 0664 /sys/class/sec/sec_touchkey/touch_version
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
-  	chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_update_status
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_update
     chmod 0664 /sys/class/sec/sec_touchkey/touch_sensitivity
-   	chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
     chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
 
 # efs  
@@ -60,7 +60,7 @@ on boot
 on fs
 
 # Support Preload install apks
-	wait /dev/block/platform/msm_sdcc.1/by-name/hidden
+    wait /dev/block/platform/msm_sdcc.1/by-name/hidden
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/hidden /preload nosuid nodev ro barrier=1
     setprop storage.preload.complete 1
 
