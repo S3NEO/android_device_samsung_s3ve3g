@@ -57,6 +57,12 @@ on boot
     mkdir /efs/drm 0700 system system
     mkdir /efs/imei 0775 radio radio
 
+# RIL
+service at_distributor /system/bin/at_distributor
+    class late_start
+    user root
+    group radio log
+
 on fs
 
 # Support Preload install apks

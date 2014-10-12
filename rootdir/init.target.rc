@@ -64,6 +64,8 @@ on post-fs-data
     mkdir /tombstones/modem 0771 system system
 
 on boot
+    start imsqmidaemon
+    insmod /system/lib/modules/adsprpc.ko
     start qcamerasvr
 
 # Enable writing to led node from userspace
@@ -140,6 +142,45 @@ service adsprpcd /system/bin/adsprpcd
    class main
    user media
    group media
+
+service prepare-mobicore /system/bin/sh /system/bin/mobicore-presetup.sh
+    class core
+	user root
+	group root
+	oneshot
+
+service run-mobicore /system/bin/sh /system/bin/mobicore-startup.sh
+	class core
+	user system
+	group system
+
+on property:init.svc.bootanim=stopped
+	start run-mobicore
+
+service imsqmidaemon /system/bin/imsqmidaemon
+    class main
+    user system
+    group radio net_raw log qcom_diag
+    disabled
+
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service imsdatadaemon /system/bin/imsdatadaemon
+    class main
+    user root
+    group system wifi radio net_raw log qcom_diag net_admin
+    disabled
+
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio net_raw diag qcom_diag log
+   disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start ims_rtp_daemon
 
 service wcnss-service /system/bin/wcnss_service
    class late_start
