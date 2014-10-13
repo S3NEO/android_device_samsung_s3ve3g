@@ -267,6 +267,9 @@ on post-fs-data
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
+on property:persist.radio.atfwd.start=false
+    stop atfwd
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
@@ -568,6 +571,11 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+
+service atfwd /system/bin/ATFWD-daemon
+    class late_start
+    user system
+    group system radio
 
 service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     class late_start

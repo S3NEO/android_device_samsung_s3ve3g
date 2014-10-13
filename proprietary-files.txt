@@ -240,6 +240,7 @@ vendor/lib/libqmiservices.so
 
 # Radio
 bin/at_distributor
+bin/ATFWD-daemon
 bin/ds_fmc_appd
 bin/qmiproxy
 bin/qmuxd
@@ -252,7 +253,6 @@ lib/libcordon.so
 lib/libfactoryutil.so
 lib/libomission_avoidance.so
 lib/libreference-ril.so
-lib/libsecnativefeature.so
 lib/libsecril-client.so
 lib/libsec-ril.so
 lib/libril.so
