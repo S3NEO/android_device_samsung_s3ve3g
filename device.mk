@@ -218,7 +218,6 @@ PRODUCT_PACKAGES += \
     init.qcom.coex.sh \
     init.qcom.efs.sync.sh \
     init.qcom.fm.sh \
-    init.qcom.modem_links.sh \
     init.qcom.post_boot.sh \
     init.qcom.wifi.sh
 

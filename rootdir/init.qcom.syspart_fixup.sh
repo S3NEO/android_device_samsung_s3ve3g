@@ -45,11 +45,6 @@ mount -o rw,remount,barrier=1 /system
 # timing critical tasks in a separate process to
 # prevent slowdown at boot.
 
-# Run modem link script
-if [ -f /system/etc/init.qcom.modem_links.sh ]; then
-  /system/bin/sh /system/etc/init.qcom.modem_links.sh
-fi
-
 # Run wifi script
 if [ -f /system/etc/init.qcom.wifi.sh ]; then
   /system/bin/sh /system/etc/init.qcom.wifi.sh "$target" "$serial"
