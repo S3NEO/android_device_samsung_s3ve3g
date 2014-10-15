@@ -111,6 +111,10 @@ cameradata/datapattern_front_420sp.yuv
 
 # DRM
 bin/qseecomd
+lib/drm/libdrmwvmplugin.so
+lib/libdrmdecrypt.so
+lib/libwvm.so
+lib/libWVphoneAPI.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
@@ -119,6 +123,8 @@ vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libStDrvInt.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libWVStreamControlAPI_L3.so
 
 # Fastcharge
 bin/hvdcp
@@ -159,28 +165,6 @@ etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
 etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
-vendor/lib/libmmrtpencoder.so
-
-# IMS - Clean this after we get ril working
-bin/imsdatadaemon
-bin/imsqmidaemon
-bin/ims_rtp_daemon
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-imscamera.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rcsjni.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-vendor/lib/libmmrtpdecoder.so
 
 # Listen service
 vendor/lib/liblistenhardware.so
@@ -234,14 +218,11 @@ vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
-# Radio - Clean this after we get RIL working
-bin/at_distributor
-bin/ATFWD-daemon
+# Radio
 bin/ds_fmc_appd
-bin/qmiproxy
 bin/qmuxd
-bin/rfs_access
 bin/radish
+bin/rfs_access
 bin/rild
 bin/rmt_storage
 lib/libatparser.so
@@ -279,5 +260,4 @@ bin/ptt_socket_app
 lib/libqsap_sdk.so
 
 # Misc
-bin/bridgemgrd
 bin/port-bridge
