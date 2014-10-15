@@ -54,6 +54,9 @@ BOARD_CHARGING_CMDLINE_VALUE := "true"
 # CMHW
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
+# Custom RIL class
+BOARD_RIL_CLASS := ../../../device/samsung/s3ve3g/ril/
+
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
 

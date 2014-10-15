@@ -12,8 +12,10 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV,RUIM
 ro.telephony.default_network=0
-ro.telephony.ril_class=SamsungQualcommRIL
+ro.telephony.ril_class=SamsungMSM8226RIL
+telephony.lteOnGsmDevice=0
 
 # Audio
 audio.offload.24bit.enable=false
