@@ -136,6 +136,7 @@ bin/fm_qsoc_patches
 # GPS
 -app/com.qualcomm.location.apk
 etc/permissions/com.qualcomm.location.xml
+lib/hw/flp.default.so
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
@@ -241,6 +242,7 @@ vendor/lib/libxml.so
 # Sensors
 bin/sensors.qcom
 lib/hw/sensors.msm8226.so
+lib/libyasalgo.so
 vendor/lib/libsensor1.so
 etc/sensor_def_qcomdev.conf
 
