@@ -21,6 +21,7 @@ vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libcsd-client.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcvirt.so
 
@@ -33,6 +34,16 @@ vendor/lib/liboi_sbc_decoder.so
 # Camera
 bin/mm-qcamera-daemon
 lib/hw/camera.msm8226.so
+lib/B08QT_libTsAe.so
+lib/B08QT_libTsAf.so
+lib/B08QT_libTs_J_Accm.so
+lib/B08QT_libTs_J_Awb.so
+lib/libarcsoft_flawlessface.so
+lib/libarcsoft_night_shot.so
+lib/libarcsoft_panorama_burstcapture.so
+lib/libarcsoft_picaction.so
+lib/libarcsoft_sensorndk.so
+lib/libarcsoft_skin_soften.so
 lib/libchromatix_s5k6a3yx_smart_stay.so
 lib/libchromatix_s5k6a3yx_vt.so
 lib/libchromatix_s5k6a3yx_vt_hd.so
@@ -44,6 +55,10 @@ lib/libmmcamera_wavelet_lib.so
 lib/libmmcamera2_stats_algorithm.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
+lib/libTsAe.so
+lib/libTsAf.so
+lib/libTs_J_Accm.so
+lib/libTs_J_Awb.so
 vendor/lib/B08QT_libchromatix_imx175_common.so
 vendor/lib/B08QT_libchromatix_imx175_common_res0.so
 vendor/lib/B08QT_libchromatix_imx175_common_res1.so
@@ -113,6 +128,7 @@ cameradata/datapattern_front_420sp.yuv
 bin/qseecomd
 lib/drm/libdrmwvmplugin.so
 lib/libdrmdecrypt.so
+lib/libhdcp2.so
 lib/libwvm.so
 lib/libWVphoneAPI.so
 vendor/lib/mediadrm/libwvdrmengine.so
