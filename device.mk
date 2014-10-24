@@ -224,6 +224,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.qcom.class_core.sh \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.ssr.sh \
