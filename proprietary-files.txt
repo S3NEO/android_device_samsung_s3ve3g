@@ -203,8 +203,7 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 -vendor/lib/libHevcSwDecoder.so
 
-# NFC
-lib/hw/nfc.MSM8226.so
+# NFC firmware
 vendor/firmware/libpn547_fw.so
 vendor/firmware/libpn547_fw_pku.so
 vendor/firmware/libpn547_fw_platform.so
