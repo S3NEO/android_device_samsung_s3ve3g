@@ -177,7 +177,12 @@
 /dev/wcnss_ctrl           0660   system     system
 
 #nfc permissions
-/dev/nfc-nci              0660    nfc         nfc
+/dev/pn547                0660   nfc        nfc
+/sys/devices/f9925000.i2c/i2c-2/2-0028  init_deinit 0200    nfc     nfc
+/sys/devices/f9925000.i2c/i2c-2/2-0028  set_pwr     0200    nfc     nfc
+/sys/devices/f9925000.i2c/i2c-2/2-0028  res_ready   0400    nfc     nfc
+/sys/devices/f9925000.i2c/i2c-2/2-0028  recv_rsp    0600    nfc     nfc
+/sys/devices/f9925000.i2c/i2c-2/2-0028  send_cmd    0200    nfc     nfc
 
 # UIO devices
 /dev/uio0                 0660   system     system
