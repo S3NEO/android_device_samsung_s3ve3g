@@ -32,14 +32,14 @@ on early-init
 
     mkdir /firmware 0771 system system
     mkdir /firmware-modem 0771 system system
-    symlink /data/tombstones /tombstones
 
-on init
+    mkdir /persist 0771 system system
 
     mkdir /efs 0771 system radio
 
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
+    symlink /data/tombstones /tombstones
+
+on init
 
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
@@ -86,7 +86,6 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
-    write /sys/kernel/boot_adsp/boot 1
 
     wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337

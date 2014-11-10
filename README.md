@@ -24,9 +24,10 @@ This branch is for building CyanogenMod 11.0 Firmware.
 TODO:
 =======
 
-	- Fix Audio in Calls
 	- Fix Camera
-	- Fix Compass ( + GPS Lock )
-	- Fix NFC
+	- Fix GPS
 	- SELinux
+	- Fix Buggy LPM
+	- Fix CWM recovery loop
+	- Fix NFC
 	- ...
