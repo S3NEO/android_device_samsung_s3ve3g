@@ -213,28 +213,21 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.ath3k.bt.sh \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.coex.sh \
-    init.qcom.efs.sync.sh \
     init.qcom.fm.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.wifi.sh
+    init.qcom.post_boot.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
-    init.qcom.sh \
     init.qcom.ssr.sh \
-    init.qcom.syspart_fixup.sh \
     init.qcom.usb.rc \
-    init.qcom.usb.sh \
     ueventd.qcom.rc
 
 # Thermal
-PRODUCT_PACKAGES += \
-    thermal-engine-8226.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 # Torch
 PRODUCT_PACKAGES += \

@@ -1,11 +1,13 @@
-/*
- * Copyright (C) 2014 The CyanogenMod Project
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2014, The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,11 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#ifndef DEVICE_PERMS_H
-#define DEVICE_PERMS_H
-
-#define PROPERTY_PERMS_APPEND \
-    { "persist.audio.",   AID_SYSTEM,   0 }, \
-    { "persist.sys.camera.", AID_MEDIA, 0 },
-#endif /* DEVICE_PERMS_H */
+-->
+<resources>
+    <bool name="def_accelerometer_rotation">true</bool>
+    <bool name="def_screen_brightness_automatic_mode">true</bool>
+</resources>

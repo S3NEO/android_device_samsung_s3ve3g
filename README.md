@@ -28,6 +28,5 @@ TODO:
 	- Fix GPS
 	- SELinux
 	- Fix Buggy LPM
-	- Fix CWM recovery loop
 	- Fix NFC
 	- ...
