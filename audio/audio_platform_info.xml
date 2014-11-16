@@ -38,6 +38,8 @@
         <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="53" />
+        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" acdb_id="57" />
+        <device name="SND_DEVICE_IN_VOIP_SPEAKER_MIC" acdb_id="64" />
     </acdb_ids>
 
     <backend_names>
@@ -85,6 +87,7 @@
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" alias="vr-sub-mic" />
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" alias="rec-stereo-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" alias="rec-stereo-mic" />
+        <device name="SND_DEVICE_IN_VOIP_SPEAKER_MIC" alias="voip-main-mic-others" />
     </device_names>
 
 </audio_platform_info>

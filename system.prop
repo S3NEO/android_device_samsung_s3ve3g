@@ -24,7 +24,7 @@ audio.offload.gapless.enabled=false
 av.offload.enable=true
 ro.qc.sdk.audio.fluencetype=none
 use.dedicated.device.for.voip=true
-use.voice.path.for.pcm.voip=true
+use.voice.path.for.pcm.voip=false
 
 # Bluetooth
 qcom.bt.le_dev_pwr_class=1 
