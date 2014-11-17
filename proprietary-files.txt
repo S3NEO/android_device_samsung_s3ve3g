@@ -26,11 +26,12 @@ vendor/lib/liboi_sbc_decoder.so
 
 # Camera
 bin/mm-qcamera-daemon
-lib/hw/camera.msm8226.so
+lib/hw/camera.msm8226.so:lib/hw/camera.vendor.msm8226.so
 lib/B08QT_libTsAe.so
 lib/B08QT_libTsAf.so
 lib/B08QT_libTs_J_Accm.so
 lib/B08QT_libTs_J_Awb.so
+lib/libAfSingle.so
 lib/libarcsoft_flawlessface.so
 lib/libarcsoft_night_shot.so
 lib/libarcsoft_panorama_burstcapture.so
