@@ -261,8 +261,10 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time services
+-app/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
 
 # WiFi
 bin/ptt_socket_app
