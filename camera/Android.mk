@@ -55,6 +55,10 @@ ifeq ($(TARGET_VIDEO_PREVIEW_ALWAYS_MAX),true)
     LOCAL_CFLAGS += -DVIDEO_PREVIEW_ALWAYS_MAX
 endif
 
+ifeq ($(TARGET_NEED_EXPOSURE_HACK),true)
+    LOCAL_CFLAGS += -DEXPOSURE_HACK
+endif
+
 LOCAL_SRC_FILES := \
     CameraWrapper.cpp
 
