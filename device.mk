@@ -216,8 +216,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.fm.sh \
-    init.qcom.post_boot.sh
+    init.qcom.fm.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
