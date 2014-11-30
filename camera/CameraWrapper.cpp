@@ -21,7 +21,8 @@
 *
 */
 
-#define LOG_NDEBUG 0
+// #define LOG_NDEBUG 0
+#define LOG_PARAMETERS
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
@@ -99,71 +100,30 @@ static int check_vendor_module()
 
 #define KEY_VIDEO_HFR_VALUES "video-hfr-values"
 
-const static char * iso_values[] = {"auto,"
-#ifdef ISO_MODE_50
-"ISO50,"
-#endif
-#ifdef ISO_MODE_HJR
-"ISO_HJR,"
-#endif
-"ISO100,ISO200,ISO400,ISO800"
-#ifdef ISO_MODE_1600
-",ISO1600"
-#endif
-,"auto"};
+const static char * iso_values[] = {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600,auto"};
 
 static char *camera_fixup_getparams(int id, const char *settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-#if !LOG_NDEBUG
+#ifdef LOG_PARAMETERS
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
 
     // fix params here
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
-#ifdef EXPOSURE_HACK
     params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
     params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
     params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
-#endif
-#ifdef PREVIEW_SIZE_FIXUP
-    params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, id ? "640x480" : "800x480");
-#endif
-#ifdef VIDEO_PREVIEW_ALWAYS_MAX
     params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "1920x1080");
-#endif
-#ifdef FFC_PICTURE_FIXUP
-    if (id == 1) {
-        params.set(android::CameraParameters::KEY_SUPPORTED_PICTURE_SIZES, "1392x1392,1280x720,640x480");
-    }
-#endif
-#ifdef FFC_VIDEO_FIXUP
-    if (id == 1) {
-        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES, "1280x720,640x480,320x240,176x144");
-    }
-#endif
+    params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
 
-#ifdef DISABLE_FACE_DETECTION
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    /* Disable face detection for front facing camera */
-    if (id == 1) {
-#endif
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
-        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
-        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    }
-#endif
-#endif
     /* If the vendor has HFR values but doesn't also expose that
      * this can be turned off, fixup the params to tell the Camera
      * that it really is okay to turn it off.
      */
-
     const char* hfrValues = params.get(KEY_VIDEO_HFR_VALUES);
     if (hfrValues && *hfrValues && ! strstr(hfrValues, "off")) {
         char tmp[strlen(hfrValues) + 4 + 1];
@@ -171,7 +131,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
         params.set(KEY_VIDEO_HFR_VALUES, tmp);
     }
 
-#if !LOG_NDEBUG
+#ifdef LOG_PARAMETERS
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
 #endif
@@ -182,20 +142,24 @@ static char *camera_fixup_getparams(int id, const char *settings)
     return ret;
 }
 
-static bool wasVideo = false;
-
 static char *camera_fixup_setparams(struct camera_device *device,
         const char *settings)
 {
     int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
-    const char *camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
 
-    bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
+    const char* recordingHint = params.get(android::CameraParameters::KEY_RECORDING_HINT);
+    bool isVideo = recordingHint && !strcmp(recordingHint, "true");
 
-#if !LOG_NDEBUG
+    if (isVideo) {
+        params.set("dis", "disable");
+        params.set(android::CameraParameters::KEY_ZSL, "off");
+    } else {
+        params.set(android::CameraParameters::KEY_ZSL, "on");
+    }
+
+#ifdef LOG_PARAMETERS
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
@@ -214,70 +178,9 @@ static char *camera_fixup_setparams(struct camera_device *device,
             params.set(android::CameraParameters::KEY_ISO_MODE, "800");
         else if (strcmp(isoMode, "ISO1600") == 0)
             params.set(android::CameraParameters::KEY_ISO_MODE, "1600");
-        else if (strcmp(isoMode, "ISO50") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "50");
     }
 
-#ifdef FFC_PICTURE_FIXUP
-    if (id == 1) {
-        params.set(android::CameraParameters::KEY_SUPPORTED_PICTURE_SIZES, "1392x1392,1280x720,640x480");
-    }
-#endif
-#ifdef FFC_VIDEO_FIXUP
-    if (id == 1) {
-        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES, "1280x720,640x480,320x240,176x144");
-    }
-#endif
-
-#ifdef DISABLE_FACE_DETECTION
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    /* Disable face detection for front facing camera */
-    if (id == 1) {
-#endif
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
-        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
-        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    }
-#endif
-#endif
-
-#ifdef SAMSUNG_CAMERA_MODE
-    /* Samsung camcorder mode */
-    if (id == 1) {
-    /* Enable for front camera only */
-        if (!(!strcmp(camMode, "1") && !isVideo) || wasVideo) {
-        /* Enable only if not already set (Snapchat) but do enable if the setting is left
-        over while switching from stills to video */
-            if ((!strcmp(params.get(android::CameraParameters::KEY_PREVIEW_FRAME_RATE), "15") ||
-               (!strcmp(params.get(android::CameraParameters::KEY_PREVIEW_SIZE), "320x240") &&
-               !strcmp(params.get(android::CameraParameters::KEY_JPEG_QUALITY), "96"))) && !isVideo) {
-                /* Do not set for video chat in Hangouts (Frame rate 15) or Skype (Preview size 320x240
-                and jpeg quality 96 */
-            } else {
-                /* "Normal case". Required to prevent distorted video and reboots while taking snaps */
-                params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
-            }
-            wasVideo = (isVideo || wasVideo);
-        }
-    } else {
-        wasVideo = false;
-    }
-#endif
-#ifdef ENABLE_ZSL
-    /* Only activate ZSL if requested by the app! */
-    if (!strcmp(params.get(android::CameraParameters::KEY_ZSL), "on")) {
-        params.set(android::CameraParameters::KEY_CAMERA_MODE, "1");
-#ifdef MAGIC_ZSL_1508
-        if (!isVideo) {
-            camera_send_command(device, 1508, 0, 0);
-        }
-#endif
-    }
-#endif
-
-#if !LOG_NDEBUG
+#ifdef LOG_PARAMETERS
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
 #endif
@@ -472,13 +375,8 @@ static int camera_cancel_auto_focus(struct camera_device *device)
     if (!device)
         return -EINVAL;
 
-    /* APEXQ/EXPRESS: Calling cancel_auto_focus causes the camera to crash for unknown reasons.
-     * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
-     * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
-#ifndef DISABLE_AUTOFOCUS
     if (camera_preview_enabled(device))
         ret = VENDOR_CALL(device, cancel_auto_focus);
-#endif
 
     return ret;
 }
@@ -633,7 +531,6 @@ static int camera_device_open(const hw_module_t *module, const char *name,
     int cameraid;
     wrapper_camera_device_t *camera_device = NULL;
     camera_device_ops_t *camera_ops = NULL;
-    wasVideo = false;
 
     android::Mutex::Autolock lock(gCameraWrapperLock);
 
