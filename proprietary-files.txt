@@ -187,6 +187,10 @@ etc/firmware/a300_pm4.fw
 etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 
+# IPC router security
+bin/irsc_util
+etc/sec_config
+
 # Listen service
 vendor/lib/liblistenhardware.so
 vendor/lib/liblistenjni.so
@@ -223,7 +227,6 @@ vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
 
 # Qualcomm framework
-bin/irsc_util
 vendor/lib/libdiag.so
 vendor/lib/libdsnetutils.so
 vendor/lib/libdsutils.so
@@ -277,7 +280,6 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 
 # WiFi
-bin/ptt_socket_app
 lib/libqsap_sdk.so
 
 # Misc
