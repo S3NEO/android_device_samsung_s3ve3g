@@ -25,7 +25,6 @@ TODO:
 =======
 
 	- Fix Camera
-	- Fix Buggy LPM
 	- SELinux
 	- Fix NFC
 	- ...

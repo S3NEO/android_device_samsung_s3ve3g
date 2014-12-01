@@ -111,7 +111,7 @@ on post-fs-data
     chmod 0664 /data/.ant.info
 
     # for WIFI Version
-	write /data/.wifiver.info 0
+    write /data/.wifiver.info 0
     chown system root /data/.wifiver.info
     chmod 0664 /data/.wifiver.info
 
@@ -244,7 +244,7 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-	# Allow subsystem (modem etc) debugging
+    # Allow subsystem (modem etc) debugging
     write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
 
 on boot
@@ -517,32 +517,32 @@ on boot
     symlink /dev/pn547 /dev/pn544
 
     # Permissions for Charging
-	chown system radio /sys/class/power_supply/battery/batt_reset_soc
-	chown system radio /sys/class/power_supply/battery/update
-	chown system radio /sys/class/power_supply/battery/factory_mode
-	chown system radio /sys/class/power_supply/battery/batt_slate_mode
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/call
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/browser
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/hotspot
-	chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/camera
-	chown system radio /sys/class/power_supply/battery/talk_wcdma
-	chown system radio /sys/class/power_supply/battery/talk_gsm
-	chown system radio /sys/class/power_supply/battery/call
-	chown system radio /sys/class/power_supply/battery/data_call
-	chown system radio /sys/class/power_supply/battery/gps
-	chown system radio /sys/class/power_supply/battery/wifi
-	chown system radio /sys/class/power_supply/battery/lte
-	chown system radio /sys/class/power_supply/battery/wc_enable
-	chown system radio /sys/class/power_supply/battery/lcd
-	chown system radio /sys/class/power_supply/ps/status
-	chmod 0664 /sys/class/power_supply/ps/status
+    chown system radio /sys/class/power_supply/battery/batt_reset_soc
+    chown system radio /sys/class/power_supply/battery/update
+    chown system radio /sys/class/power_supply/battery/factory_mode
+    chown system radio /sys/class/power_supply/battery/batt_slate_mode
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/call
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/browser
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/hotspot
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/camera
+    chown system radio /sys/class/power_supply/battery/talk_wcdma
+    chown system radio /sys/class/power_supply/battery/talk_gsm
+    chown system radio /sys/class/power_supply/battery/call
+    chown system radio /sys/class/power_supply/battery/data_call
+    chown system radio /sys/class/power_supply/battery/gps
+    chown system radio /sys/class/power_supply/battery/wifi
+    chown system radio /sys/class/power_supply/battery/lte
+    chown system radio /sys/class/power_supply/battery/wc_enable
+    chown system radio /sys/class/power_supply/battery/lcd
+    chown system radio /sys/class/power_supply/ps/status
+    chmod 0664 /sys/class/power_supply/ps/status
 
-	# Permission for fast dormancy for RIL
+    # Permission for fast dormancy for RIL
     chown system radio /sys/devices/virtual/sec/bamdmux/waketime
 
-	# Permissions for gpio_keys
+    # Permissions for gpio_keys
     chown system radio /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
 
@@ -606,8 +606,8 @@ on boot
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
-# Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    # Define TCP buffer sizes for various networks
+    #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,704512,4096,16384,110208
     setprop net.tcp.buffersize.wifi    524288,1048576,4525824,524288,1048576,4525824
     setprop net.tcp.buffersize.lte     524288,1048576,2560000,524288,1048576,2560000
@@ -620,8 +620,8 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,30000,30000,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
 
-# Assign TCP buffer thresholds to be ceiling value of technology maximums
-# Increased technology maximums should be reflected here.
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  1048576
     write /proc/sys/net/core/wmem_max  2097152
 
@@ -954,7 +954,7 @@ on property:sys.boot_completed=1
 on property:init.svc.bootanim=stopped
     write /sys/block/mmcblk0/queue/scheduler row
     
-# Configure ondemand governor
+    # Configure ondemand governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"

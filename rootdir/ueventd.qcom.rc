@@ -162,9 +162,9 @@
 /dev/tsc_ci0              0660   media       media
 
 # sensors
-/sys/devices/i2c-12/12-*            pollrate_ms     0664     system    system
-/sys/devices/f9925000.i2c/i2c-0/0-* enable          0660     input     system
-/sys/devices/f9925000.i2c/i2c-0/0-* poll_delay      0660     input     system
+/sys/devices/i2c-12/12-*                            pollrate_ms    0664    system   system
+/sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
+/sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system
 /sys/devices/virtual/optical_sensors/proximity      ps_adc         0660    input    system
 /sys/devices/virtual/optical_sensors/proximity      ps_poll_delay  0660    input    system
 /sys/devices/virtual/optical_sensors/lightsensor    ls_auto        0660    input    system
@@ -177,7 +177,7 @@
 /dev/wcnss_ctrl           0660   system     system
 
 #nfc permissions
-/dev/pn547                0660   nfc        nfc
+/dev/pn547                                          0660    nfc     nfc
 /sys/devices/f9925000.i2c/i2c-2/2-0028  init_deinit 0200    nfc     nfc
 /sys/devices/f9925000.i2c/i2c-2/2-0028  set_pwr     0200    nfc     nfc
 /sys/devices/f9925000.i2c/i2c-2/2-0028  res_ready   0400    nfc     nfc
