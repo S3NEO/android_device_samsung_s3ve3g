@@ -24,7 +24,7 @@ This branch is for building CyanogenMod 11.0 Firmware.
 TODO:
 =======
 
-	- Fix Camera
+	- Fix Stock Camera
 	- SELinux
 	- Fix NFC
 	- ...
