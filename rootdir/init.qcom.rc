@@ -28,11 +28,6 @@
 import init.qcom.usb.rc
 
 on early-init
-    write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/module/msm_thermal/core_control/enabled 1
 
     mount debugfs debugfs /sys/kernel/debug
 
@@ -730,9 +725,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-
-on property:sys.boot_completed=1
-    start qcom-post-boot
 
 service qmuxd /system/bin/qmuxd
     class main
