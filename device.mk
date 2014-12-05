@@ -67,11 +67,6 @@ PRODUCT_PACKAGES += \
     camera.msm8226 \
     libxml2
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
-
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
@@ -92,12 +87,6 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libebtc
-
-# Filesystem
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    resize2fs \
-    setup_fs
 
 # FM
 PRODUCT_PACKAGES += \
@@ -252,3 +241,6 @@ PRODUCT_COPY_FILES += \
     kernel/samsung/s3ve3g/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     kernel/samsung/s3ve3g/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
+# Samsung qcom common
+$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)

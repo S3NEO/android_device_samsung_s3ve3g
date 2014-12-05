@@ -8,6 +8,10 @@
     "target_path": "hardware/qcom/fm"
   },
   {
+    "repository": "Rox-/android_device_samsung_qcom-common",
+    "target_path": "device/samsung/qcom-common"
+  },
+  {
     "repository": "android_hardware_qcom_display-caf-new",
     "target_path": "hardware/qcom/display-caf-new"
   },
