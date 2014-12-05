@@ -18,6 +18,9 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/s3ve3g/include
 
 TARGET_OTA_ASSERT_DEVICE := s3ve3g
 
+# Inherit from qcom-common
+-include device/samsung/qcom-common/BoardConfigCommon.mk
+
 # Architecture
 TARGET_CPU_VARIANT := krait
 
