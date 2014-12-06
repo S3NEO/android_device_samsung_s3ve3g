@@ -16,7 +16,7 @@ LOCAL_PATH := device/samsung/s3ve3g
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/s3ve3g/include
 
-TARGET_OTA_ASSERT_DEVICE := s3ve3g
+TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds
 
 # Inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
@@ -70,6 +70,8 @@ TARGET_HW_DISK_ENCRYPTION := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_s3ve3g.c
+TARGET_UNIFIED_DEVICE := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
@@ -132,7 +134,6 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 30
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Wifi

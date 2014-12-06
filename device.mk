@@ -242,5 +242,5 @@ PRODUCT_COPY_FILES += \
     kernel/samsung/s3ve3g/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
-# Samsung qcom common
+# Inherit from qcom-common
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
