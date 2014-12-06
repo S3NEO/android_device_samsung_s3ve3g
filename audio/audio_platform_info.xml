@@ -77,7 +77,7 @@
         <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" alias="voice-call-headset-mic" />
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" alias="rec-stereo-mic" />
         <device name="SND_DEVICE_IN_VOICE_DMIC" alias="voice-call-main-mic" />
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-call-sub-mic" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-call-main-mic" />
         <device name="SND_DEVICE_IN_VOICE_TTY_FULL_HEADSET_MIC" alias="TTY-full-mic" />
         <device name="SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC" alias="TTY-vco-mic" />
         <device name="SND_DEVICE_IN_VOICE_TTY_HCO_HEADSET_MIC" alias="TTY-headset-mic" />
