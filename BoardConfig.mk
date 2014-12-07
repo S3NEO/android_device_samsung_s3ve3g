@@ -54,7 +54,7 @@ BOARD_CHARGING_CMDLINE_VALUE := "charger"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
 # Custom RIL class
 BOARD_RIL_CLASS := ../../../device/samsung/s3ve3g/ril/
