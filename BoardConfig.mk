@@ -132,6 +132,9 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/s3ve3g
+
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file

@@ -1,7 +1,5 @@
 Device Tree For Samsung Galaxy S3 Neo
-=====================================
-
-European Single SIM variant GT-I9301I 
+===================================== 
 
 Basic   | Spec Sheet
 -------:|:-------------------------
