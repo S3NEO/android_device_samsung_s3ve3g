@@ -13,13 +13,18 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
-ro.telephony.ril_class=SamsungMSM8226RIL
 
 # Audio
 af.resampler.quality=4
+audio.offload.24bit.enable=false
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=false
-av.offload.enable=true
+audio.offload.multiple.enabled=false
+audio.offload.pcm.enable=true
+av.offload.enable=false
+av.streaming.offload.enable=false
+media.aac_51_output_enabled=true
+mm.enable.smoothstreaming=true
 ro.qc.sdk.audio.fluencetype=none
 use.dedicated.device.for.voip=true
 use.voice.path.for.pcm.voip=false

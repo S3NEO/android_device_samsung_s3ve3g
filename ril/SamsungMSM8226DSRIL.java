@@ -1,5 +1,8 @@
 /*
- * Copyright (c) 2014, The CyanogenMod Project. All rights reserved.
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ * Not a Contribution.
+ *
+ * Copyright (C) 2006 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,23 +21,71 @@ package com.android.internal.telephony;
 
 import static com.android.internal.telephony.RILConstants.*;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.telephony.Rlog;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.LocalSocket;
+import android.net.LocalSocketAddress;
+import android.os.AsyncResult;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Parcel;
+import android.os.PowerManager;
+import android.os.SystemProperties;
+import android.os.PowerManager.WakeLock;
+import android.provider.Settings.SettingNotFoundException;
+import android.telephony.CellInfo;
+import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.Rlog;
 import android.telephony.SignalStrength;
+import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
+import android.text.TextUtils;
+import android.util.SparseArray;
+
+import com.android.internal.telephony.gsm.SmsBroadcastConfigInfo;
+import com.android.internal.telephony.gsm.SsData;
+import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
+import com.android.internal.telephony.uicc.IccIoResult;
+import com.android.internal.telephony.uicc.IccRefreshResponse;
+import com.android.internal.telephony.uicc.IccUtils;
+import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
+import com.android.internal.telephony.cdma.CdmaInformationRecords;
+import com.android.internal.telephony.cdma.CdmaSmsBroadcastConfigInfo;
+import com.android.internal.telephony.dataconnection.DcFailCause;
+import com.android.internal.telephony.dataconnection.DataCallResponse;
+import com.android.internal.telephony.dataconnection.DataProfileOmh;
+import com.android.internal.telephony.dataconnection.DataProfile;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Random;
+
 
 /**
  * RIL customization for Galaxy S3 Neo Single-sim devices
  *
  * {@hide}
  */
-public class SamsungMSM8226RIL extends RIL {
+public class SamsungMSM8226DSRIL extends RIL implements CommandsInterface {
 
     private static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
     private static final int RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED = 1036;
@@ -42,11 +93,18 @@ public class SamsungMSM8226RIL extends RIL {
     private static final int RIL_UNSOL_AM = 11010;
     private static final int RIL_UNSOL_WB_AMR_STATE = 11017;
     private static final int RIL_UNSOL_RESPONSE_HANDOVER = 11021;
+    private static final int RIL_UNSOL_ON_SS_I9300I = 1040;
+    private static final int RIL_UNSOL_STK_CC_ALPHA_NOTIFY_I9300I = 1041;
+    private static final int RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED_I9300I = 11031;
 
-    public SamsungMSM8226RIL(Context context, int networkMode, int cdmaSubscription) {
-        super(context, networkMode, cdmaSubscription);
+
+
+
+    public SamsungMSM8226DSRIL(Context context, int networkMode, int cdmaSubscription,Integer instanceId) {
+        super(context, networkMode, cdmaSubscription,  instanceId);
         mQANElements = 6;
     }
+
 
     @Override
     public void
@@ -60,9 +118,9 @@ public class SamsungMSM8226RIL extends RIL {
 
         rr.mParcel.writeString(address);
         rr.mParcel.writeInt(clirMode);
-        rr.mParcel.writeInt(0);     // CallDetails.call_type
-        rr.mParcel.writeInt(1);     // CallDetails.call_domain
-        rr.mParcel.writeString(""); // CallDetails.getCsvFromExtras
+        rr.mParcel.writeInt(0);         // CallDetails.call_type
+        rr.mParcel.writeInt(1);         // CallDetails.call_domain
+        rr.mParcel.writeString("");     // CallDetails.getCsvFromExtras
 
         if (uusInfo == null) {
             rr.mParcel.writeInt(0); // UUS information is absent
@@ -108,6 +166,7 @@ public class SamsungMSM8226RIL extends RIL {
             appStatus.pin1_replaced  = p.readInt();
             appStatus.pin1           = appStatus.PinStateFromRILInt(p.readInt());
             appStatus.pin2           = appStatus.PinStateFromRILInt(p.readInt());
+            // All subsequent readInt()s added for our device
             p.readInt(); // pin1_num_retries
             p.readInt(); // puk1_num_retries
             p.readInt(); // pin2_num_retries
@@ -139,6 +198,7 @@ public class SamsungMSM8226RIL extends RIL {
             dc = new DriverCall();
 
             dc.state = DriverCall.stateFromCLCC(p.readInt());
+            // & 0xff to truncate to 1 byte added for us, not in RIL.java
             dc.index = p.readInt() & 0xff;
             dc.TOA = p.readInt();
             dc.isMpty = (0 != p.readInt());
@@ -146,7 +206,7 @@ public class SamsungMSM8226RIL extends RIL {
             dc.als = p.readInt();
             voiceSettings = p.readInt();
             dc.isVoice = (0 != voiceSettings);
-            boolean isVideo = (0 != p.readInt());   // Samsung CallDetails
+            boolean isVideo = (0 != p.readInt());
             int call_type = p.readInt();            // Samsung CallDetails
             int call_domain = p.readInt();          // Samsung CallDetails
             String csv = p.readString();            // Samsung CallDetails
@@ -204,7 +264,7 @@ public class SamsungMSM8226RIL extends RIL {
     @Override
     protected Object
     responseSignalStrength(Parcel p) {
-        int gsmSignalStrength = p.readInt() & 0xff;
+        int gsmSignalStrength = (p.readInt() & 0xff00)/85;
         int gsmBitErrorRate = p.readInt();
         int cdmaDbm = p.readInt();
         int cdmaEcio = p.readInt();
@@ -244,12 +304,102 @@ public class SamsungMSM8226RIL extends RIL {
     }
 
     @Override
+    protected RILRequest
+    processSolicited (Parcel p) {
+        int serial, error;
+        boolean found = false;
+        int dataPosition = p.dataPosition(); // save off position within the Parcel
+        serial = p.readInt();
+        error = p.readInt();
+
+        RILRequest rr = null;
+
+        /* Pre-process the reply before popping it */
+        synchronized (mRequestList) {
+                RILRequest tr = mRequestList.get(serial);
+                if (tr != null && tr.mSerial == serial) {
+                    if (error == 0 || p.dataAvail() > 0) {
+                        try {switch (tr.mRequest) {
+                            /* Get those we're interested in */
+                            case RIL_REQUEST_DATA_REGISTRATION_STATE:
+                                rr = tr;
+                                break;
+                        }} catch (Throwable thr) {
+                            // Exceptions here usually mean invalid RIL responses
+                            if (tr.mResult != null) {
+                                AsyncResult.forMessage(tr.mResult, null, thr);
+                                tr.mResult.sendToTarget();
+                            }
+                            return tr;
+                        }
+                    }
+                }
+        }
+
+        if (rr == null) {
+            /* Nothing we care about, go up */
+            p.setDataPosition(dataPosition);
+
+            // Forward responses that we are not overriding to the super class
+            return super.processSolicited(p);
+        }
+
+
+        rr = findAndRemoveRequestFromList(serial);
+
+        if (rr == null) {
+            return rr;
+        }
+
+        Object ret = null;
+
+        if (error == 0 || p.dataAvail() > 0) {
+            switch (rr.mRequest) {
+                case RIL_REQUEST_DATA_REGISTRATION_STATE: ret =  dataRegState(p); break;
+                default:
+                    throw new RuntimeException("Unrecognized solicited response: " + rr.mRequest);
+            }
+            //break;
+        }
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "< " + requestToString(rr.mRequest)
+            + " " + retToString(rr.mRequest, ret));
+
+        if (rr.mResult != null) {
+            AsyncResult.forMessage(rr.mResult, ret, null);
+            rr.mResult.sendToTarget();
+        }
+        return rr;
+    }
+
+    private Object
+    dataRegState(Parcel p) {
+        int num;
+        String response[];
+
+        response = p.readStringArray();
+
+        /* DANGER WILL ROBINSON
+         * In some cases from Vodaphone we are receiving a RAT of 102
+         * while in tunnels of the metro.  Lets Assume that if we
+         * receive 102 we actually want a RAT of 2 for EDGE service */
+        if (response.length > 4 &&
+            response[0].equals("1") &&
+            response[3].equals("102")) {
+
+            response[3] = "2";
+        }
+        return response;
+    }
+
+
+    @Override
     protected void
     processUnsolicited (Parcel p) {
         Object ret;
         int dataPosition = p.dataPosition(); // save off position within the Parcel
         int response = p.readInt();
-
+        int newResponse = response;
         switch(response) {
             case RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED:
                 ret = responseVoid(p);
@@ -266,22 +416,32 @@ public class SamsungMSM8226RIL extends RIL {
             case RIL_UNSOL_RESPONSE_HANDOVER:
                 ret = responseVoid(p);
                 break;
-            default:
-                // Rewind the Parcel
-                p.setDataPosition(dataPosition);
-
-                // Forward responses that we are not overriding to the super class
-                super.processUnsolicited(p);
-                return;
+            case 1040:
+                newResponse = RIL_UNSOL_ON_SS;
+                break;
+            case 1041:
+                newResponse = RIL_UNSOL_STK_CC_ALPHA_NOTIFY;
+                break;
+            case 11031:
+                newResponse = RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED;
+                break;
         }
+        if (newResponse != response) {
+            p.setDataPosition(dataPosition);
+            p.writeInt(newResponse);
+        }
+        p.setDataPosition(dataPosition);
+        super.processUnsolicited(p);
     }
+
 
     private void
     dialEmergencyCall(String address, int clirMode, Message result) {
         RILRequest rr;
+        Rlog.v(RILJ_LOG_TAG, "Emergency dial: " + address);
 
         rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY, result);
-        rr.mParcel.writeString(address);
+        rr.mParcel.writeString(address + "/");
         rr.mParcel.writeInt(clirMode);
         rr.mParcel.writeInt(0);        // CallDetails.call_type
         rr.mParcel.writeInt(3);        // CallDetails.call_domain
@@ -291,5 +451,17 @@ public class SamsungMSM8226RIL extends RIL {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
+    }
+
+    private void logParcel(Parcel p) {
+        StringBuffer s = new StringBuffer();
+        byte [] bytes = p.marshall();
+
+        for (int i = 0; i < bytes.length; i++) {
+            if (i > 0) s.append(" ");
+            if (i == p.dataPosition()) s.append("*** ");
+            s.append(bytes[i]);
+        }
+        riljLog("parcel position=" + p.dataPosition() + ": " + s);
     }
 }

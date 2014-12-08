@@ -60,6 +60,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "s3ve3gxx-user 4.4.2 KOT49H I9301IXXUANH1 release-keys");
         property_set("ro.product.model", "GT-I9301I");
         property_set("ro.product.device", "s3ve3g");
+        property_set("ro.telephony.ril_class", "SamsungMSM8226RIL");
         gsm_properties();
     } else if (strstr(bootloader, "I9300I")) {
         /* s3ve3gds */
@@ -69,6 +70,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.device", "s3ve3gds");
         property_set("persist.dsds.enabled", "true");
         property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril_class", "SamsungMSM8226DSRIL");
         gsm_properties();
     }
 
