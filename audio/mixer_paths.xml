@@ -588,13 +588,13 @@
 
 	<path name="voice-call-speaker">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
+		<ctl name="RX4 Digital Volume" value="90" />
 		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
 	<path name="voice-call-speaker-extra-vol">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
+		<ctl name="RX4 Digital Volume" value="90" />
 		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
