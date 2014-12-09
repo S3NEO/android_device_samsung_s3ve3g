@@ -251,6 +251,7 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
 # Radio
+bin/ATFWD-daemon
 bin/ds_fmc_appd
 bin/qmuxd
 bin/radish

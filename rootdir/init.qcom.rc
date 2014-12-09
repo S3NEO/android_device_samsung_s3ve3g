@@ -633,6 +633,14 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
+on property:persist.radio.atfwd.start=false
+    stop atfwd
+
+service atfwd /system/bin/ATFWD-daemon
+    class late_start
+    user system
+    group system radio
+
 service audiod /system/bin/audiod
     class late_start
     user system
