@@ -73,7 +73,7 @@
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" alias="voice-call-sub-mic" />
         <device name="SND_DEVICE_IN_HEADSET_MIC" alias="rec-headset-mic" />
         <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" alias="rec-main-mic" />
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-call-sub-mic" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-call-main-mic" />
         <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" alias="voice-call-headset-mic" />
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" alias="rec-stereo-mic" />
         <device name="SND_DEVICE_IN_VOICE_DMIC" alias="voice-call-main-mic" />
