@@ -20,7 +20,12 @@
 
 #define BTM_DEF_LOCAL_NAME   "Galaxy S3 Neo"
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+
 #define BLUETOOTH_QCOM_SW TRUE
-#define BLUETOOTH_QCOM_LE_INTL_SCAN TRUE
-#define BTC_INCLUDED TRUE
+#define BTA_HOST_INTERLEAVE_SEARCH TRUE
+// skips conn update at conn completion
+#define BTA_BLE_SKIP_CONN_UPD TRUE
+// Disables read remote device feature
+#define BTA_SKIP_BLE_READ_REMOTE_FEAT TRUE
+
 #endif
