@@ -15,7 +15,6 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 
 # Audio
-af.resampler.quality=4
 audio.offload.24bit.enable=false
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=false
@@ -48,7 +47,6 @@ ro.qc.sdk.izat.service_mask=0x0
 
 # Qualcomm
 persist.timed.enable=true
-qcom.hw.aac.encoder=true
 ro.qualcomm.cabl=0
 ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 
