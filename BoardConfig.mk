@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/samsung/s3ve3g
-
 TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds
 
 # Inherit from msm8226-common
 -include device/samsung/msm8226-common/BoardConfigCommon.mk
+
+LOCAL_PATH := device/samsung/s3ve3g
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
