@@ -159,7 +159,7 @@ bin/fmconfig
 bin/fm_qsoc_patches
 
 # GPS
--app/com.qualcomm.location.apk
+-app/com.qualcomm.location/com.qualcomm.location.apk
 etc/permissions/com.qualcomm.location.xml
 lib/hw/flp.default.so
 lib/libloc_api_v02.so
@@ -250,7 +250,6 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
 # Radio
-bin/ATFWD-daemon
 bin/ds_fmc_appd
 bin/qmuxd
 bin/radish
@@ -283,7 +282,7 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time services
--app/TimeService.apk
+-app/TimeService/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so

@@ -17,7 +17,7 @@ Camera  | 8 MP, 3264 x 2448 pixels
 
 ![Galaxy S3 Neo](http://cdn2.gsmarena.com/vv/pics/samsung/samsung-i9301l-galaxy-s3-neo.jpg "Galaxy S3 Neo")
 
-This branch is for building CyanogenMod 11.0 Firmware.
+This branch is for building CyanogenMod 12.0 Firmware.
 
 TODO:
 =======

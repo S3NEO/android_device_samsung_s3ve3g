@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds
-
 # Inherit from msm8226-common
 -include device/samsung/msm8226-common/BoardConfigCommon.mk
+
+TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds
 
 LOCAL_PATH := device/samsung/s3ve3g
 
