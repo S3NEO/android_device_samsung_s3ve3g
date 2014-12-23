@@ -59,9 +59,6 @@ ro.use_data_netmgrd=false
 # Recovery
 ro.cwm.forbid_format=/efs,/firmware,/firmware-modem,/persist,/boot
 
-# SELinux
-ro.boot.selinux=disabled
-
 # Sensors
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
