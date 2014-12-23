@@ -16,6 +16,7 @@
 """ Custom OTA commands for s3ve3g devices """
 
 def FullOTA_InstallEnd(info):
+  info.script.Mount("/system")
   info.script.AppendExtra('ifelse(is_substring("I9301I", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /system/blobs/s3ve3g/* /system/"));')
   info.script.AppendExtra('ifelse(is_substring("I9300I", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /system/blobs/s3ve3gds/* /system/"));')
   info.script.AppendExtra('set_metadata("/system/bin/ATFWD-daemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");')
@@ -23,3 +24,4 @@ def FullOTA_InstallEnd(info):
   info.script.AppendExtra('set_metadata("/system/bin/qmuxd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");')
   info.script.AppendExtra('set_metadata("/system/bin/radish", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");')
   info.script.AppendExtra('set_metadata("/system/bin/rild", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:rild_exec:s0");')
+  info.script.Unmount("/system")
