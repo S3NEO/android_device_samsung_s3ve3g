@@ -60,7 +60,7 @@ ro.use_data_netmgrd=false
 ro.cwm.forbid_format=/efs,/firmware,/firmware-modem,/persist,/boot
 
 # SELinux
-ro.boot.selinux=permissive
+ro.boot.selinux=disabled
 
 # Sensors
 ro.qc.sdk.gestures.camera=false
