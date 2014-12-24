@@ -82,8 +82,6 @@ on fs
     # Kickstart the Wireless subsystem
     write /dev/wcnss_wlan 1
 
-    setprop ro.crypto.fuse_sdcard true
-
 on post-fs-data
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
@@ -733,21 +731,6 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
-
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
-on property:sys.boot_completed=1
-    start qrngp
-
-service qrngp /system/bin/qrngp
-    class main
-    user root
-    group root
-    oneshot
-    disabled
 
 service qseecomd /system/bin/qseecomd
     class core
