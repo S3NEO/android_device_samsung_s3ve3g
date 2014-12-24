@@ -22,8 +22,6 @@ vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libcsd-client.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
 bin/btnvtool
@@ -79,6 +77,7 @@ vendor/lib/libmmQTA.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
+vendor/lib/libsensor1.so
 
 # Camera chromatix
 lib/B08QT_libTsAe.so
@@ -148,8 +147,8 @@ vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libStDrvInt.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so
 
 # Fastcharge
 bin/hvdcp
@@ -273,7 +272,6 @@ vendor/lib/libxml.so
 bin/sensors.qcom
 lib/hw/sensors.msm8226.so
 lib/libyasalgo.so
-vendor/lib/libsensor1.so
 etc/sensor_def_qcomdev.conf
 
 # Thermal
