@@ -76,6 +76,9 @@ on fs
     # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/hidden /preload nosuid nodev ro barrier=1
     # setprop storage.preload.complete 1
 
+    restorecon_recursive /persist
+    restorecon_recursive /efs
+
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
 
@@ -124,6 +127,7 @@ on post-fs-data
     mkdir /efs/wifi 0775 radio system
     chown system wifi /efs/wifi/.mac.info
     chmod 0660 /efs/wifi/.mac.info
+    restorecon /efs/wifi/.mac.info
     chmod 0660 /efs/wifi/.mac.cob
 
     # Create directory used by audio subsystem
@@ -202,6 +206,9 @@ on post-fs-data
     mkdir /efs/drm 0774 drm system
     mkdir /efs/drm/sdrm 0774 drm system
     mkdir /efs/drm/sdrm/data_agent 0774 drm system
+    restorecon /efs/drm
+    restorecon /efs/drm/sdrm
+    restorecon /efs/drm/sdrm/data_agent
 
     # DivX DRM
     mkdir /efs/.files 0775
@@ -497,6 +504,15 @@ on boot
     chown system radio /sys/class/sensors/proximity_sensor/vendor
     chown system radio /sys/class/sensors/proximity_sensor/name
 
+    # Sensors
+    chown system system /efs/FactoryApp/baro_delta
+    chmod 0640 /efs/FactoryApp/baro_delta
+    restorecon /efs/FactoryApp/baro_delta
+
+    chown system system /efs/gyro_cal_data
+    chmod 0640 /efs/gyro_cal_data
+    restorecon /efs/gyro_cal_data
+
     # Torch
     chown system system /sys/class/leds/led:flash_torch/brightness
     chmod 0666 /sys/class/leds/led:flash_torch/brightness
@@ -595,12 +611,17 @@ on boot
     chmod 0664 /sys/class/sec/sec_touchkey/touch_sensitivity
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
     chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
+    restorecon /sys/class/sec/sec_touchkey/keypad_enable
 
     # Permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chmod 0640 /efs/bluetooth/bt_addr
+    restorecon_recursive /efs/bluetooth
+
     chown bluetooth net_bt_stack /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
+
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type

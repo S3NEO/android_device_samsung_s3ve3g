@@ -22,6 +22,5 @@ This branch is for building CyanogenMod 12.0 Firmware.
 TODO:
 =======
 
-	- SELinux
 	- Fix NFC
 	- ...
