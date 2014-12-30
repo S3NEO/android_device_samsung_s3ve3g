@@ -62,13 +62,9 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
-    hostapd \
     hostapd.accept \
     hostapd.deny \
-    hostapd_default.conf \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    hostapd_default.conf
 
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \
