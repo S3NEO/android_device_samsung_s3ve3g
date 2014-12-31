@@ -227,8 +227,8 @@
     <bool name="skip_restoring_network_selection">true</bool>
 
     <!-- Performance profiles -->
-    <!-- <string name="config_perf_profile_prop">sys.perf.profile</string> -->
-    <!-- <string name="config_perf_profile_default_entry">1</string> -->
+    <string name="config_perf_profile_prop">sys.perf.profile</string>
+    <string name="config_perf_profile_default_entry">1</string>
 
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
