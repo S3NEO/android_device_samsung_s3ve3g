@@ -1,0 +1,3 @@
+allow wpa efs_file:dir search;
+allow wpa wifi_efs_file:dir search;
+allow wpa wifi_efs_file:file { open read };
