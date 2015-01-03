@@ -23,7 +23,7 @@ LOCAL_PATH := device/samsung/s3ve3g
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # CMHW
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/s3ve3g/cmhw
 
 # Init
 TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_s3ve3g.c
@@ -59,4 +59,4 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/s3ve3g
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += device/samsung/s3ve3g/sepolicy
