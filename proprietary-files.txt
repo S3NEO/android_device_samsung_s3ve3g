@@ -134,12 +134,10 @@ cameradata/datapattern_front_420sp.yuv
 
 # DRM
 bin/qseecomd
-lib/drm/libdrmwvmplugin.so
-lib/libdrmdecrypt.so
 lib/libhdcp2.so
-lib/libwvm.so
-lib/libWVphoneAPI.so
+vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -148,6 +146,7 @@ vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libStDrvInt.so
 vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # Fastcharge
