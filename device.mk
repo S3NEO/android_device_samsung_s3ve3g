@@ -47,7 +47,8 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.crda.sh \
-    init.qcom.bt.sh
+    init.qcom.bt.sh \
+    init.qcom.fm.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
