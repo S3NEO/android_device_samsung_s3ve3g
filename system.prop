@@ -39,7 +39,6 @@ camera2.portability.force_api=1
 
 # Display
 debug.composition.type=c2d 
-debug.enabletr=0
 ro.opengles.version=196608
 ro.sf.lcd_density=320
 
@@ -63,7 +62,3 @@ ro.use_data_netmgrd=false
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
 ro.qc.sdk.sensors.gestures=true
-
-# Wifi
-persist.sys.qc.sub.rdump.on=1
-persist.sys.ssr.restart_level=3
