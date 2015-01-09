@@ -679,13 +679,6 @@ service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
     disabled
     oneshot
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user root
-    group system fm_radio
-    disabled
-    oneshot
-
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
