@@ -716,13 +716,8 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     oneshot
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class main
     user root
-    disabled
-
-service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
-    class late_start
-    user system
-    group system inet
     disabled
 
 service qcamerasvr /system/bin/mm-qcamera-daemon

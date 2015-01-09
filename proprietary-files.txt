@@ -72,8 +72,6 @@ vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmipl.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmQTA.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
@@ -151,9 +149,6 @@ vendor/lib/libWVStreamControlAPI_L1.so
 
 # Fastcharge
 bin/hvdcp
-
-# FM radio
-bin/fmconfig
 
 # GPS
 -app/com.qualcomm.location/com.qualcomm.location.apk
@@ -264,10 +259,8 @@ vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libxml.so
 
 # Sensors
-bin/sensors.qcom
 lib/hw/sensors.msm8226.so
 lib/libyasalgo.so
-etc/sensor_def_qcomdev.conf
 
 # Thermal
 bin/thermal-engine
@@ -282,6 +275,3 @@ vendor/lib/libTimeService.so
 
 # WiFi
 lib/libqsap_sdk.so
-
-# Misc
-bin/port-bridge
