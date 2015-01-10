@@ -189,6 +189,13 @@ etc/firmware/a330_pm4.fw
 bin/irsc_util
 etc/sec_config
 
+# Keymaster firmware
+vendor/firmware/keymaster/keymaster.b01
+vendor/firmware/keymaster/keymaster.b02
+vendor/firmware/keymaster/keymaster.b03
+vendor/firmware/keymaster/keymaster.b04
+vendor/firmware/keymaster/keymaster.mdt
+
 # Listen service
 vendor/lib/liblistenhardware.so
 vendor/lib/liblistenjni.so
