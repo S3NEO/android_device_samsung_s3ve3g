@@ -142,13 +142,9 @@ vendor/lib/libdrmtime.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/libStDrvInt.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
-
-# Fastcharge
-bin/hvdcp
 
 # GPS
 -app/com.qualcomm.location/com.qualcomm.location.apk
@@ -195,12 +191,6 @@ vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.b04
 vendor/firmware/keymaster/keymaster.mdt
-
-# Listen service
-vendor/lib/liblistenhardware.so
-vendor/lib/liblistenjni.so
-vendor/lib/liblistensoundmodel.so
-vendor/lib/liblisten.so
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -277,7 +267,7 @@ vendor/lib/libthermalioctl.so
 # Time services
 -app/TimeService/TimeService.apk
 bin/time_daemon
--vendor/lib/libtime_genoff.so
+vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
 
 # WiFi

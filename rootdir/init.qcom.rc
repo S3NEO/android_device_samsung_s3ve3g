@@ -676,24 +676,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
-    class late_start
-    user root
-    group root
-    oneshot
-    disabled
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -834,26 +816,6 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
 
 service iprenew_bt-pan /system/bin/dhcpcd -n
     class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 

@@ -60,11 +60,7 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    hostapd.accept \
-    hostapd.deny \
-    hostapd_default.conf
-
-PRODUCT_PACKAGES += \
+    hostapd_default.conf \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf
 
