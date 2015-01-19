@@ -42,7 +42,7 @@
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
 
-#permissions for CSVT
+# Permissions for CSVT
 /dev/smd11                0660   radio      radio
 
 /dev/radio0               0640   system     system
@@ -114,7 +114,7 @@
 /dev/graphics/*           0660   system     graphics
 /dev/tun                  0660   system     vpn
 
-#permissions for audio
+# Permissions for audio
 /dev/msm_qcelp            0660   system     audio
 /dev/msm_evrc             0660   system     audio
 /dev/msm_wma              0660   system     audio
@@ -146,11 +146,11 @@
 /dev/ttyHSL0              0660   radio      system
 /dev/ttyHSL1              0660   system     system
 /dev/mdm                  0660   system     radio
-/sys/devices/virtual/smdpkt/smdcntl*        open_timeout   0664 radio radio
 /dev/sdio_tty_ciq_00      0660   system     system
 /dev/tty_sdio_00          0660   system     system
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media      media
+/sys/devices/virtual/smdpkt/smdcntl*        open_timeout   0664 radio radio
 
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
@@ -161,7 +161,7 @@
 /dev/tsc_mux0             0660   media       media
 /dev/tsc_ci0              0660   media       media
 
-# sensors
+# Sensors
 /sys/devices/i2c-12/12-*                            pollrate_ms    0664    system   system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system
@@ -172,11 +172,11 @@
 /sys/devices/virtual/input/input*                   poll           0660    input    system
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
 
-# wlan
+# Wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
 
-#nfc permissions
+# Nfc permissions
 /dev/pn547                                          0660    nfc     nfc
 /sys/devices/f9925000.i2c/i2c-2/2-0028  init_deinit 0200    nfc     nfc
 /sys/devices/f9925000.i2c/i2c-2/2-0028  set_pwr     0200    nfc     nfc
@@ -189,5 +189,5 @@
 /dev/uio1                 0660   system     system
 /dev/uio2                 0660   system     system
 
-# permission for dun
+# Permission for dun
 /dev/dun                  0660   system     system

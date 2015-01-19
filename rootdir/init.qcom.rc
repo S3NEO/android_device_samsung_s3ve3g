@@ -176,9 +176,7 @@ on post-fs-data
     # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
-    # Gpio DVS
-    chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
-
+    # Create thombstone folders
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
 
@@ -241,37 +239,38 @@ on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+    # For BT MAC address
+    mkdir /efs/bluetooth 0775 radio system
+
+    # Permissions for bluetooth
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown radio net_bt_stack /efs/bluetooth/bt_addr
+    chmod 0640 /efs/bluetooth/bt_addr
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chown bluetooth bluetooth /dev/ttyHS2
+    chmod 0660 /dev/ttyHS0
+    chmod 0660 /dev/ttyHS2
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
     chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
-    chown system system /sys/module/sco/parameters/disable_esco
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    chown system system /sys/module/sco/parameters/disable_esco
     chmod 0660 /sys/module/bluetooth_power/parameters/power
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /dev/ttyHS0
     chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
     chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
-    chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-    chmod 0660 /dev/ttyHS2
-    chown bluetooth bluetooth /dev/ttyHS2
+    restorecon_recursive /efs/bluetooth
 
     # IMEI
     mkdir /efs/imei 0775 radio radio
-
-    # for BT MAC address
-    mkdir /efs/bluetooth 0775 radio system
-
-    # Audience ES705 UART
-    chmod 0660 /dev/ttyHS3
-    chown system system /dev/ttyHS3
 
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -286,12 +285,11 @@ on boot
     setprop wifi.interface wlan0
 
     # Modem requires this
+    chown root radio /proc/cmdline
     chmod 0644 /proc/cmdline
 
     # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
-
-    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
@@ -344,14 +342,6 @@ on boot
     chown system radio /sys/class/sec/switch/reset_switch
     chown radio system /sys/class/sec/switch/usb_state
 
-    # SEC DVFS sysfs node
-    chown radio system /sys/power/cpufreq_max_limit
-    chown radio system /sys/power/cpufreq_min_limit
-    chown radio system /sys/power/cpufreq_table
-    chmod 664 /sys/power/cpufreq_max_limit
-    chmod 664 /sys/power/cpufreq_min_limit
-    chmod 664 /sys/power/cpufreq_table
-
     chown radio system /sys/devices/system/cpu/kernel_max
     chmod 664 /sys/devices/system/cpu/kernel_max
 
@@ -363,15 +353,15 @@ on boot
     chmod 664  /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
 
     chown radio system /sys/class/devfreq/qcom,cpubw.43/available_frequencies
-    chmod 664 /sys/class/devfreq/qcom,cpubw.43/available_frequencies
+    chmod 664 /sys/class/devfreq/qcom,cpubw.68/available_frequencies
     chown radio system /sys/class/devfreq/qcom,cpubw.43/available_governors
-    chmod 664 /sys/class/devfreq/qcom,cpubw.43/available_governors
+    chmod 664 /sys/class/devfreq/qcom,cpubw.68/available_governors
     chown radio system /sys/class/devfreq/qcom,cpubw.43/governor
-    chmod 664 /sys/class/devfreq/qcom,cpubw.43/governor
+    chmod 664 /sys/class/devfreq/qcom,cpubw.68/governor
     chown radio system /sys/class/devfreq/qcom,cpubw.43/max_freq
-    chmod 664 /sys/class/devfreq/qcom,cpubw.43/max_freq
+    chmod 664 /sys/class/devfreq/qcom,cpubw.68/max_freq
     chown radio system /sys/class/devfreq/qcom,cpubw.43/min_freq
-    chmod 664 /sys/class/devfreq/qcom,cpubw.43/min_freq
+    chmod 664 /sys/class/devfreq/qcom,cpubw.68/min_freq
 
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
@@ -390,8 +380,7 @@ on boot
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boost
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/input_boost
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
     chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
@@ -411,10 +400,11 @@ on boot
     chown system system /sys/class/mdnie/mdnie/negative
     chown system media_rw /sys/class/mdnie/mdnie/accessibility
 
+    chown radio system /sys/class/lcd/panel/lcd_power
+    chown radio system /sys/class/lcd/panel/lcd_type
     chown radio system /sys/class/lcd/panel/power_reduce
     chown radio system /sys/class/lcd/panel/siop_enable
 
-    chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/button-backlight/brightness
 
@@ -424,8 +414,6 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_min
     chown system system /sys/kernel/ipv4/tcp_rmem_def
     chown system system /sys/kernel/ipv4/tcp_rmem_max
-
-    chown root radio /proc/cmdline
 
     # Adjust YUV to RGB Conversion(CSC_Conversion)
     chown system media_rw /sys/class/graphics/fb0/csc_cfg
@@ -531,12 +519,10 @@ on boot
     chown system radio /sys/class/power_supply/battery/call
     chown system radio /sys/class/power_supply/battery/data_call
     chown system radio /sys/class/power_supply/battery/gps
-    chown system radio /sys/class/power_supply/battery/wadb shifi
+    chown system radio /sys/class/power_supply/battery/wifi
     chown system radio /sys/class/power_supply/battery/lte
     chown system radio /sys/class/power_supply/battery/wc_enable
     chown system radio /sys/class/power_supply/battery/lcd
-    chown system radio /sys/class/power_supply/ps/status
-    chmod 0664 /sys/class/power_supply/ps/status
 
     # Permission for fast dormancy for RIL
     chown system radio /sys/devices/virtual/sec/bamdmux/waketime
@@ -574,7 +560,6 @@ on boot
     chown system system /sys/class/sec/sec_touchkey/touchkey_brightness
     chown system system /sys/class/sec/sec_touchkey/touchkey_menu
     chown system system /sys/class/sec/sec_touchkey/touchkey_back
-    chown system system /sys/class/sec/sec_touchkey/touch_version
     chown system system /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
     chown system system /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
     chown system system /sys/class/sec/sec_touchkey/touchkey_firm_update_status
@@ -582,12 +567,10 @@ on boot
     chown system system /sys/class/sec/sec_touchkey/touch_sensitivity
     chown system system /sys/class/sec/sec_touchkey/touchkey_threshold
     chown system system /sys/devices/virtual/sec/sec_touchkey/brightness
-
     chmod 0664 /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_brightness
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_menu
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_back
-    chmod 0664 /sys/class/sec/sec_touchkey/touch_version
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_update_status
@@ -596,19 +579,6 @@ on boot
     chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
     chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
     restorecon /sys/class/sec/sec_touchkey/keypad_enable
-
-    # Permissions for bluetooth.
-    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
-    chown bluetooth net_bt_stack ro.bt.bdaddr_path
-    chmod 0640 /efs/bluetooth/bt_addr
-    restorecon_recursive /efs/bluetooth
-
-    chown bluetooth net_bt_stack /dev/ttyHS0
-    chmod 0660 /dev/ttyHS0
-
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
     # Define TCP buffer sizes for various networks
     #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -629,7 +599,7 @@ on boot
     write /proc/sys/net/core/rmem_max  1048576
     write /proc/sys/net/core/wmem_max  2097152
 
-# Services begin here
+# Services
 
 service adsprpcd /system/bin/adsprpcd
     class main
@@ -646,16 +616,13 @@ service charger /charger
     critical
     seclabel u:r:healthd:s0
 
-on property:vold.decrypt=trigger_restart_framework
-    start config_bluetooth
-
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
     user root
     oneshot
 
-on property:persist.data.ds_fmc_app.mode=1
-    start ds_fmc_appd
+on property:vold.decrypt=trigger_restart_framework
+    start config_bluetooth
 
 service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
     class late_start
@@ -663,11 +630,8 @@ service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
     disabled
     oneshot
 
-on property:bluetooth.hciattach=false
-    setprop bluetooth.status off
-
-on property:bluetooth.hciattach=true
-    start hciattach
+on property:persist.data.ds_fmc_app.mode=1
+    start ds_fmc_appd
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
@@ -675,6 +639,12 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     group bluetooth net_bt_admin
     disabled
     oneshot
+
+on property:bluetooth.hciattach=true
+    start hciattach
+
+on property:bluetooth.hciattach=false
+    setprop bluetooth.status off
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -701,10 +671,6 @@ service qseecomd /system/bin/qseecomd
     user root
     group root
 
-on property:ro.boot.emmc=true
-    start rfs_access
-    start rmt_storage
-
 service rfs_access /system/bin/rfs_access
     class core
     user system
@@ -714,6 +680,10 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     disabled
+
+on property:ro.boot.emmc=true
+    start rfs_access
+    start rmt_storage
 
 # SD card service
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
@@ -816,6 +786,26 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
 
 service iprenew_bt-pan /system/bin/dhcpcd -n
     class late_start
+    disabled
+    oneshot
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
