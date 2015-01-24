@@ -1,0 +1,1 @@
+allow wcnss_service efs_file:dir search;

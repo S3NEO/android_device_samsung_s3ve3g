@@ -76,8 +76,12 @@ on fs
     # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/hidden /preload nosuid nodev ro barrier=1
     # setprop storage.preload.complete 1
 
-    restorecon_recursive /persist
     restorecon_recursive /efs
+    restorecon_recursive /persist
+
+    mkdir /persist/data 0700 system system
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
 
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
@@ -123,6 +127,9 @@ on post-fs-data
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
+
+    # Create directory used by radio subsystem
+    mkdir /data/radio 0770 radio radio
 
     # Create directory used by the DASH client
     mkdir /data/misc/dash 0770 media audio
@@ -716,7 +723,7 @@ service time_daemon /system/bin/time_daemon
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
-    user system
+    user root
     group system wifi
     oneshot
 
