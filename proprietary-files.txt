@@ -27,7 +27,6 @@ vendor/lib/libcsd-client.so
 bin/btnvtool
 bin/hci_qcomm_init
 vendor/lib/libbtnv.so
-vendor/lib/liboi_sbc_decoder.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -199,9 +198,6 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libSHIMDivxDrm.so
 -vendor/lib/libHevcSwDecoder.so
-
-# NFC firmware
-vendor/firmware/libpn547_fw.so
 
 # Perf
 bin/mpdecision
