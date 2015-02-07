@@ -289,8 +289,6 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    setprop wifi.interface wlan0
-
     # Modem requires this
     chown root radio /proc/cmdline
     chmod 0644 /proc/cmdline
@@ -622,14 +620,6 @@ service charger /charger
     class charger
     critical
     seclabel u:r:healthd:s0
-
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
-
-on property:vold.decrypt=trigger_restart_framework
-    start config_bluetooth
 
 service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
     class late_start
