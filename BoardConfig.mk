@@ -60,4 +60,5 @@ BOARD_SEPOLICY_DIRS += device/samsung/s3ve3g/sepolicy
 
 BOARD_SEPOLICY_UNION += \
        hostapd.te \
-       platform_app.te
+       platform_app.te \
+       kernel.te
