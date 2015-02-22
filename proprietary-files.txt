@@ -134,7 +134,6 @@ cameradata/datapattern_front_420sp.yuv
 
 # DRM
 bin/qseecomd
-lib/libhdcp2.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libdrmdecrypt.so
@@ -205,11 +204,6 @@ vendor/lib/libSHIMDivxDrm.so
 # Perf
 bin/mpdecision
 vendor/lib/libqc-opt.so
-
-# Postprocessing
-vendor/lib/libdisp-aba.so
-vendor/lib/libmm-abl.so
-vendor/lib/libmm-abl-oem.so
 
 # Qualcomm framework
 vendor/lib/libdiag.so
