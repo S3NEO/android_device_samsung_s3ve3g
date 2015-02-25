@@ -1,1 +1,0 @@
-allow rild proc_net:file { write };

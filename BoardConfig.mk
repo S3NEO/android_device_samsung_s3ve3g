@@ -53,12 +53,3 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/s3ve3g
-
-# SELinux
--include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/samsung/s3ve3g/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-       hostapd.te \
-       platform_app.te \
-       kernel.te

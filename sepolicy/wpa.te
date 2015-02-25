@@ -1,3 +1,0 @@
-allow wpa efs_file:dir search;
-allow wpa wifi_efs_file:file { read open getattr };
-allow wpa wifi_data_file:sock_file { create write unlink setattr };

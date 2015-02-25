@@ -1,3 +1,0 @@
-allow thermal-engine init:unix_stream_socket connectto;
-allow thermal-engine sysfs_battery_supply:dir search;
-allow thermal-engine sysfs_battery_supply:file { open read write };
