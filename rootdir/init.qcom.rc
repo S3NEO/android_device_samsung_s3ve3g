@@ -421,6 +421,10 @@ on boot
     chown system media_rw /sys/class/graphics/fb0/csc_cfg
     chmod 0660 /sys/class/graphics/fb0/csc_cfg
 
+    # Display color calibration
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+
     # OTG Test
     chown system radio /sys/class/host_notify/usb_otg/booster
     chmod 0660 /sys/class/host_notify/usb_otg/booster
