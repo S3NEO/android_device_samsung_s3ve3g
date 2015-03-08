@@ -10,7 +10,7 @@
 #     * Neither the name of The Linux Foundation nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
-#       permission.
+#       permission.c
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -354,15 +354,15 @@ on boot
     chown radio system /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
     chmod 664  /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
 
-    chown radio system /sys/class/devfreq/qcom,cpubw.43/available_frequencies
+    chown radio system /sys/class/devfreq/qcom,cpubw.68/available_frequencies
     chmod 664 /sys/class/devfreq/qcom,cpubw.68/available_frequencies
-    chown radio system /sys/class/devfreq/qcom,cpubw.43/available_governors
+    chown radio system /sys/class/devfreq/qcom,cpubw.68/available_governors
     chmod 664 /sys/class/devfreq/qcom,cpubw.68/available_governors
-    chown radio system /sys/class/devfreq/qcom,cpubw.43/governor
+    chown radio system /sys/class/devfreq/qcom,cpubw.68/governor
     chmod 664 /sys/class/devfreq/qcom,cpubw.68/governor
-    chown radio system /sys/class/devfreq/qcom,cpubw.43/max_freq
+    chown radio system /sys/class/devfreq/qcom,cpubw.68/max_freq
     chmod 664 /sys/class/devfreq/qcom,cpubw.68/max_freq
-    chown radio system /sys/class/devfreq/qcom,cpubw.43/min_freq
+    chown radio system /sys/class/devfreq/qcom,cpubw.68/min_freq
     chmod 664 /sys/class/devfreq/qcom,cpubw.68/min_freq
 
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
