@@ -16,17 +16,14 @@ ril.subscription.types=NV,RUIM
 
 # Audio and Media
 audio.offload.buffer.size.kb=32
-audio.offload.gapless.enabled=true
-audio.offload.multiple.enabled=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
-av.offload.enable=true
+audio.offload.gapless.enabled=false
+audio.offload.multiple.enabled=false
+av.offload.enable=false
 av.streaming.offload.enable=true
 media.aac_51_output_enabled=true
 mm.enable.qcom_parser=3314291
 mm.enable.smoothstreaming=true
 ro.qc.sdk.audio.fluencetype=none
-tunnel.audio.encode=true
 use.voice.path.for.pcm.voip=false
 
 # Bluetooth
