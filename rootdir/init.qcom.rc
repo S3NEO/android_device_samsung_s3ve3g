@@ -862,7 +862,7 @@ on property:init.svc.bootanim=stopped
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
 
     # Configure CPU boost
-    # write /sys/module/cpu_boost/parameters/boost_ms 20
+    write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 600000
     write /sys/module/cpu_boost/parameters/input_boost_freq 998400
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
