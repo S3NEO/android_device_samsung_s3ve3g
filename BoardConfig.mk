@@ -19,6 +19,9 @@ TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
 
 LOCAL_PATH := device/samsung/s3ve3g
 
+# Audio
+AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
