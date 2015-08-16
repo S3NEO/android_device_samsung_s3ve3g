@@ -76,7 +76,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "s3ve3gdsxx-user 4.4.4 KTU84P I9300IXWUBNJ1 release-keys");
         property_set("ro.product.model", "GT-I9300I");
         property_set("ro.product.device", "s3ve3gds");
-        property_set("ro.multisim.samsung", "true");
+        property_set("ro.multisim.set_audio_params", "true");
         property_set("ro.multisim.simslotcount", "2");
         property_set("persist.radio.multisim.config", "dsds");
         property_set("ro.telephony.ril_class", "SamsungMSM8226DSRIL");
