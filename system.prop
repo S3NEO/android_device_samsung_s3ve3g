@@ -51,7 +51,7 @@ persist.radio.add_power_save=1
 ro.use_data_netmgrd=false
 
 # Scheduler
-sys.io.scheduler=row
+sys.io.scheduler=bfq
 
 # Sensors
 ro.qc.sdk.gestures.camera=false
