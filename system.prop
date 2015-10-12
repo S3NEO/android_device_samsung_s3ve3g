@@ -15,7 +15,7 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 
 # Audio and Media
-av.offload.enable=false
+audio.offload.enable=false
 media.aac_51_output_enabled=true
 mm.enable.qcom_parser=3314291
 mm.enable.smoothstreaming=true
