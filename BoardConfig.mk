@@ -26,7 +26,7 @@ LOCAL_PATH := device/samsung/s3ve3g
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Init
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_s3ve3g.c
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_s3ve3g.cpp
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
