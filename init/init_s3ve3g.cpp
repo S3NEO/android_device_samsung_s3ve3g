@@ -36,6 +36,12 @@
 
 #include "init_msm.h"
 
+void gsm_properties()
+{
+    property_set("telephony.lteOnGsmDevice", "0");
+    property_set("ro.telephony.default_network", "0");
+}
+
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
@@ -86,10 +92,4 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
     INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
-}
-
-void gsm_properties()
-{
-    property_set("telephony.lteOnGsmDevice", "0");
-    property_set("ro.telephony.default_network", "0");
 }
