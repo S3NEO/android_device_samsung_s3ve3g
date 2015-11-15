@@ -741,10 +741,10 @@ on property:persist.radio.multisim.config=dsds
     start ril-daemon
     start ril-daemon2
 
-service ril-daemon2 /system/bin/rild -s rild2 -ds rild-debug1 -l /system/lib/libsec-ril-dsds.so
+service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     socket rild2 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
+    socket rild-debug2 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell

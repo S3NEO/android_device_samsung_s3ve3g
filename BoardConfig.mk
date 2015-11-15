@@ -20,6 +20,7 @@ TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
 LOCAL_PATH := device/samsung/s3ve3g
 
 # Audio
+#AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 #AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
 
 # Bluetooth

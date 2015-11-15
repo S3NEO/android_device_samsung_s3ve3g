@@ -1,19 +1,5 @@
 # System.prop for s3ve3g
 
-# RIL
-rild.libpath=/system/lib/libsec-ril.so
-rild.libargs=-d /dev/smd0
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-ril.subscription.types=NV,RUIM
-
 # Audio and Media
 audio.offload.enable=false
 media.aac_51_output_enabled=true
@@ -49,6 +35,11 @@ ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 persist.data.netmgrd.qos.enable=false
 persist.radio.add_power_save=1
 ro.use_data_netmgrd=false
+
+# RIL
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/smd0
+ro.telephony.ril_class=SamsungMSM8226RIL
 
 # Scheduler
 sys.io.scheduler=bfq
