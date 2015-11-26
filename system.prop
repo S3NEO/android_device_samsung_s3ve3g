@@ -3,7 +3,6 @@
 # Audio and Media
 audio.offload.enable=false
 media.aac_51_output_enabled=true
-mm.enable.qcom_parser=3314291
 mm.enable.smoothstreaming=true
 ro.qc.sdk.audio.fluencetype=none
 use.voice.path.for.pcm.voip=false
