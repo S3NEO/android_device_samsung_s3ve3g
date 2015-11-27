@@ -172,9 +172,6 @@
          we rely on gravity to determine the effective orientation. -->
     <bool name="config_deskDockEnablesAccelerometer">false</bool>
 
-    <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
-    <bool name="config_ui_enableFadingMarquee">true</bool>
-
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
