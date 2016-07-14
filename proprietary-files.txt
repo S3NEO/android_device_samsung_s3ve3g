@@ -145,14 +145,11 @@ vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # GPS
--app/com.qualcomm.location/com.qualcomm.location.apk
-etc/permissions/com.qualcomm.location.xml
 lib/hw/flp.default.so
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
-vendor/lib/liblocationservice.so
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -194,20 +191,24 @@ bin/mpdecision
 vendor/lib/libqc-opt.so
 
 # Qualcomm framework
-vendor/lib/libdiag.so
-vendor/lib/libdsnetutils.so
+lib/libmdmdetect.so
+lib/libperipheral_client.so
 vendor/lib/libdsucsd.so
+vendor/lib/libdiag.so
+vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
+vendor/lib/libnetmgr.so
 vendor/lib/libqcci_legacy.so
+vendor/lib/libqdi.so
 vendor/lib/libqmi.so
 vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
+vendor/lib/libdsnetutils.so
 
 # Radio
 bin/ds_fmc_appd
