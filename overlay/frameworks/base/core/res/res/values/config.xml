@@ -253,4 +253,6 @@
     <!-- Whether UI for multi user should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
+    <string translatable="false" name="config_radio_access_family">GSM|WCDMA</string>
+
 </resources>
