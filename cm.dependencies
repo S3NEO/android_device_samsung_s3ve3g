@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_device_samsung_msm8226-common",
+    "target_path": "device/samsung/msm8226-common"
+  },
+  {
+    "repository": "android_kernel_samsung_s3ve3g",
+    "target_path": "kernel/samsung/s3ve3g"
+  }
+]
