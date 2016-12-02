@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SamsungDoze
 
+# Widevine
+PRODUCT_PACKAGES += \
+    libwvm_shim
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226
