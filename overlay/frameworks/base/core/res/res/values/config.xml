@@ -88,13 +88,13 @@
     <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">true</bool>
+    <add-resource type="bool" name="config_multiColorNotificationLed">true</add-resource>
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
+    <add-resource type="bool" name="config_multiColorBatteryLed">true</add-resource>
 
     <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
          Please don't copy them, copy anything else. -->
@@ -246,6 +246,8 @@
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true-->
     <bool name="skip_restoring_network_selection">true</bool>
+     <!-- Use this if we have a OLED display!!-->
+    <bool name="config_enableBurnInProtection">true</bool>
 
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
