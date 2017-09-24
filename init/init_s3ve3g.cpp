@@ -44,6 +44,7 @@ void init_variant_properties() {
     INFO("Found bootloader id s3ve3g");
 }
 
+
 void vendor_load_properties() {
     init_variant_properties();
 }

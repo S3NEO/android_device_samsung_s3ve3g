@@ -59,7 +59,6 @@ done
 
 # Pick up overlay for features that depend on non-open-source files
 PRODUCT_PACKAGES += \\
-    com.qualcomm.location \\
     TimeService
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
@@ -85,16 +84,6 @@ EOF
 LOCAL_PATH := \$(call my-dir)
 
 ifeq (\$(TARGET_DEVICE),$DEVICE)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := com.qualcomm.location
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/app/$(LOCAL_MODULE)/$(LOCAL_MODULE).apk
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_MODULE_CLASS := APPS
-LOCAL_CERTIFICATE := platform
-include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := TimeService
