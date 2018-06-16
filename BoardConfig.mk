@@ -46,9 +46,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := lineageos_s3ve3g_defconfig
 
-# FM
-BOARD_HAVE_QCOM_FM := true
-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
