@@ -51,6 +51,7 @@ void init_variant_properties() {
 	
 	if (bootloader.find("I9301I")==0) {
         /* s3ve3g */
+        property_override("ro.vendor.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
         property_override("ro.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
         property_override("ro.build.description", "s3ve3gxx-user 4.4.2 KOT49H I9301IXXUANL1 release-keys");
         property_override("ro.product.model", "GT-I9301I");
@@ -58,6 +59,7 @@ void init_variant_properties() {
         property_override("ro.telephony.default_network", "0");
     } else if (bootloader.find("I9301Q")==0) {
         /* s3ve3gjv */
+	property_override("ro.vendor.build.fingerprint", "samsung/s3ve3gjv/s3ve3g:4.4.2/KOT49H/I9301QXXUANH1:user/release-keys");
         property_override("ro.build.fingerprint", "samsung/s3ve3gjv/s3ve3g:4.4.2/KOT49H/I9301QXXUANH1:user/release-keys");
         property_override("ro.build.description", "s3ve3gjv-user 4.4.2 KOT49H I9301QXXUANH1 release-keys");
         property_override("ro.product.model", "GT-I9301Q");
@@ -65,6 +67,7 @@ void init_variant_properties() {
         property_override("ro.telephony.default_network", "0");
     } else if (bootloader.find("I9300I")==0) {
         /* s3ve3gds */
+	property_override("ro.vendor.build.fingerprint", "samsung/s3ve3gdsxx/s3ve3gds:4.4.4/KTU84P/I9300IXWUBNJ1:user/release-keys");
         property_override("ro.build.fingerprint", "samsung/s3ve3gdsxx/s3ve3gds:4.4.4/KTU84P/I9300IXWUBNJ1:user/release-keys");
         property_override("ro.build.description", "s3ve3gdsxx-user 4.4.4 KTU84P I9300IXWUBNJ1 release-keys");
         property_override("ro.product.model", "GT-I9300I");
@@ -75,7 +78,8 @@ void init_variant_properties() {
         property_override("ro.telephony.default_network", "0,1");
     } else {
 	/* DEFAULT */
-	property_override("ro.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
+        property_override("ro.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
         property_override("ro.build.description", "s3ve3gxx-user 4.4.2 KOT49H I9301IXXUANL1 release-keys");
         property_override("ro.product.model", "GT-I9301I");
         property_override("ro.product.device", "s3ve3g");
