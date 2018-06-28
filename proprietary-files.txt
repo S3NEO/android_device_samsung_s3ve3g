@@ -189,6 +189,11 @@ vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
 # Perf
 bin/mpdecision
@@ -247,3 +252,6 @@ vendor/lib/libuiblur.so
 bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
+
+# Power
+lib/hw/power.msm8226.so
