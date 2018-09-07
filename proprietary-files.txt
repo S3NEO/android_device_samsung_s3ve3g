@@ -1,3 +1,5 @@
+# NOTE THAT THOSE BLOBS SHOULD ONLY BE PULLED FROM STOCK ROM!!!!!
+
 # ADSP
 bin/adsprpcd
 vendor/lib/libadsprpc.so
