@@ -21,9 +21,10 @@ $(call inherit-product, device/samsung/s3ve3g/full_s3ve3g.mk)
 # Release name
 PRODUCT_RELEASE_NAME := GT-I9301I
 PRODUCT_NAME := xenonhd_s3ve3g
-BOARD_VENDOR := Samsung
 
 # XenonHD Manteiner
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.xenonhd.maintainer=DarkJoker360 \
     ro.xenonhd.donate="https://www.paypal.me/Martiriggiano"
+
+BUILD_FINGERPRINT := "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys"
