@@ -23,5 +23,8 @@ $(call inherit-product-if-exists, vendor/samsung/s3ve3g/s3ve3g-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+TARGET_GAPPS_ARCH := arm
+TARGET_BOOT_ANIMATION_RES := 720
+
 # common s3ve3g
 $(call inherit-product, device/samsung/s3ve3g-common/s3ve3g.mk)
