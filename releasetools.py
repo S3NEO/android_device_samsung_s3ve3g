@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-""" Custom OTA commands for s3ve3g devices """
+""" Custom OTA commands for matissewifi devices """
 
 def FullOTA_InstallEnd(info):
   info.script.Mount("/system")
