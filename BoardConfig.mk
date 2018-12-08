@@ -18,7 +18,7 @@
 
 TARGET_OTA_ASSERT_DEVICE := matissewifi,matissewifiue,matissewifixx
 
-DEVICE_PATH := device/samsung/s3ve3g
+DEVICE_PATH := device/samsung/matissewifi
 
 # This is a tablet.
 PRODUCT_CHARACTERISTICS := tablet
