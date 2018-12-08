@@ -1,2 +1,28 @@
-# Radio
+# display
+ro.sf.lcd_density=160
+
+# radio
+ro.radio.noril=yes
 telephony.lteOnGsmDevice=0
+
+# Display
+ro.sf.lcd_density=160
+
+# CWMR Options
+ro.cwm.forbid_format=/boot,/firmware,/firmware-modem
+ro.cwm.forbid_mount=/boot
+
+# Storage
+ro.sys.sdcardfs=true
+
+# Tethering
+net.tethering.noprovisioning=true
+
+# Strict Mode
+persist.sys.strictmode.disable=true
+
+# MPT & ADB
+persist.sys.usb.config=mtp,adb
+
+# Official Release
+ro.build.official.release=false
