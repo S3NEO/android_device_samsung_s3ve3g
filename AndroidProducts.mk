@@ -13,5 +13,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_s3ve3g.mk \
-    $(LOCAL_DIR)/aosp_s3ve3g.mk
+    $(LOCAL_DIR)/full_matissewifi.mk
