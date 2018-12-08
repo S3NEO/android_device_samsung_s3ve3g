@@ -16,7 +16,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # Inherit from s3ve3g device
-$(call inherit-product, device/samsung/s3ve3g/device.mk)
+$(call inherit-product, device/samsung/matissewifi/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := matissewifi
