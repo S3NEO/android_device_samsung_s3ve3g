@@ -37,11 +37,11 @@
 void init_variant_properties() {
         property_set("ro.build.fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
         property_set("ro.build.description", "s3ve3gxx-user 4.4.2 KOT49H I9301IXXUANL1 release-keys");
-        property_set("ro.product.model", "GT-I9301I");
-        property_set("ro.product.device", "s3ve3g");
+        property_set("ro.product.model", "SM-T530");
+        property_set("ro.product.device", "matissewifi");
         property_set("ro.telephony.default_network", "0");
 
-    INFO("Found bootloader id s3ve3g");
+    INFO("Found bootloader id matissewifi");
 }
 
 
