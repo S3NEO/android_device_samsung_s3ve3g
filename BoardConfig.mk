@@ -42,7 +42,8 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_matissewifi
+TARGET_INIT_VENDOR_LIB := libinit_sec
+TARGET_RECOVERY_DEVICE_MODULES := libinit_sec
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
