@@ -1,3 +1,3 @@
-add_lunch_combo lineage_matissewifi-eng
-add_lunch_combo lineage_matissewifi-userdebug
-add_lunch_combo lineage_matissewifi-user
+for i in eng userdebug user; do
+	add_lunch_combo lineage_matissewifi-${i}
+done
