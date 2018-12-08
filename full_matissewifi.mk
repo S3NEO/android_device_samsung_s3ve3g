@@ -22,5 +22,5 @@ $(call inherit-product, device/samsung/s3ve3g/device.mk)
 PRODUCT_DEVICE := matissewifi
 PRODUCT_NAME := full_matissewifi
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-T530
+PRODUCT_MODEL := SM-T530NU
 PRODUCT_MANUFACTURER := samsung
