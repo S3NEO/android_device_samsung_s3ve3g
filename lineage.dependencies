@@ -5,6 +5,6 @@
   },
   {
     "repository": "android_kernel_samsung_s3ve3g",
-    "target_path": "kernel/samsung/s3ve3g"
+    "target_path": "kernel/samsung/matissewifi"
   }
 ]

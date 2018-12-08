@@ -16,24 +16,34 @@
 # Inherit from msm8226-common
 -include device/samsung/msm8226-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
+TARGET_OTA_ASSERT_DEVICE := matissewifi,matissewifiue,matissewifixx
 
-DEVICE_PATH := device/samsung/s3ve3g
+DEVICE_PATH := device/samsung/matissewifi
+
+# This is a tablet.
+PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_AAPT_CONFIG := large
+PRODUCT_AAPT_PREF_CONFIG := mdpi
+
+# Inhert dalvik heap values from aosp
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Audio
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
-AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
+#AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+#AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
 
 # Radio
-SIM_COUNT := 2
-TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
-TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
+#SIM_COUNT := 2
+#TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
+#TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_s3ve3g
+TARGET_INIT_VENDOR_LIB := libinit_sec
+TARGET_RECOVERY_DEVICE_MODULES := libinit_sec
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
@@ -43,7 +53,7 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardwa
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
-TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
+TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
 TARGET_KERNEL_CONFIG := lineageos_s3ve3g_defconfig
 
 # FM
@@ -59,6 +69,10 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 721420288
 #BOARD_RECOVERYIMAGE_PARTITION_SIZE := 11370585
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2411724800
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12759776768
+BOARD_FLASH_BLOCK_SIZE := 131072
+
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Properties
