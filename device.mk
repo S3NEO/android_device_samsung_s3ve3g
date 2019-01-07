@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+LOCAL_PATH := device/samsung/s3ve3g
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -28,10 +30,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SamsungDoze
 
-# Widevine
-PRODUCT_PACKAGES += \
-    libwvm_shim
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226
@@ -46,8 +44,17 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    init.crda.sh \
+    init.qcom.bt.sh \
+    init.qcril.sh \
+    init.class_main.sh
+
+PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.target.rc
+    init.qcom.power.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc
 
 # Thermal
 PRODUCT_COPY_FILES += \

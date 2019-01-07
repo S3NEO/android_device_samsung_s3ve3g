@@ -12,5 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_s3ve3g.mk
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/s3ve3g/full_s3ve3g.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := GT-I9301I
+PRODUCT_NAME := cm_s3ve3g
