@@ -227,6 +227,6 @@
      <!-- Dont remove For Fixing AutoRotate -->
     <bool name="config_useSystemClockforRotationSensor">true </bool>
 
-    <string translatable="false" name="config_radio_access_family">GSM|WCDMA</string>
+    <string translatable="false" name="config_radio_access_family">LTE|GSM|WCDMA|CDMA|EVDO</string>
 
 </resources>
