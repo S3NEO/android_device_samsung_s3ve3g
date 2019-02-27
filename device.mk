@@ -18,9 +18,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 # Proprietary files
-$(call inherit-product, vendor/samsung/s3ve3g-common/s3ve3g-common-vendor.mk)
+$(call inherit-product, vendor/samsung/s3ve3g/s3ve3g-vendor-blobs.mk)
 
-$(call inherit-product, vendor/samsung/s3ve3g-common/s3ve3g_sony.mk)
+#$(call inherit-product, vendor/samsung/s3ve3g-common/s3ve3g_sony.mk)
 #$(call inherit-product, vendor/samsung/s3ve3g-common/s3ve3g_samsung.mk)
 
 # Audio configuration
