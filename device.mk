@@ -22,6 +22,7 @@ $(call inherit-product, vendor/samsung/s3ve3g/s3ve3g-vendor.mk)
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
@@ -35,7 +36,7 @@ PRODUCT_COPY_FILES += \
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
-
+    
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226 \
@@ -52,8 +53,8 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.target.rc
-
+    init.target.rc   
+    
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8226.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-8226.conf
