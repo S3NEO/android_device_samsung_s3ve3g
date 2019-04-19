@@ -21,6 +21,9 @@
 #define BTM_DEF_LOCAL_NAME   "Galaxy S3 Neo"
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 
+#define BTM_WBS_INCLUDED TRUE       /* Enable WBS */
+#define BTIF_HF_WBS_PREFERRED TRUE /* Use WBS    */
+
 #define BLUETOOTH_QTI_SW TRUE
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
