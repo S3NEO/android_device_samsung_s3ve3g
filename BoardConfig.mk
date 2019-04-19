@@ -21,6 +21,7 @@ TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
 DEVICE_PATH := device/samsung/s3ve3g
 
 # Audio
+USE_CUSTOM_AUDIO_POLICY := 1
 
 # Radio
 SIM_COUNT := 1
@@ -44,9 +45,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := lineageos_s3ve3g_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage
-
-# FM
-BOARD_HAVE_QCOM_FM := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
