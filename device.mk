@@ -36,7 +36,11 @@ PRODUCT_COPY_FILES += \
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
-    
+
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226 \
