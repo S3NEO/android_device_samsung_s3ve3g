@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
- * Copyright (C) 2012 The CyanogenMod Project <http://www.cyanogenmod.org>
+ * Copyright (C) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,14 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Galaxy S3 Neo"
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+#include <cutils/properties.h>
+#include <string.h>
+
+#define BTM_DEF_LOCAL_NAME   "Galaxy S3 NEO"
 
 #define BLUETOOTH_QTI_SW TRUE
-// Disables read remote device feature
-#define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
-#define MAX_L2CAP_CHANNELS 16
-// skips conn update at conn completion
-#define BTA_BLE_SKIP_CONN_UPD FALSE
-
-#define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
-
+#define MAX_ACL_CONNECTIONS   7
+#define MAX_L2CAP_CHANNELS    16
+#define BLE_VND_INCLUDED   TRUE
+#define BT_CLEAN_TURN_ON_DISABLED TRUE
 #endif
