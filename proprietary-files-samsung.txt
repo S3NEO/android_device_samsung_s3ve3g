@@ -69,21 +69,21 @@ vendor/lib/libmmqjpeg_codec.so|f3f79e6c709bf65240d8775074bc4aa682e6c41e
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 
-# Samsung Camera Specific Blobs - Pinned to RoX CyanongenMOD 11 were specified
-lib/E08QL_libTsAe.so:vendor/lib/E08QL_libTsAe.so
-lib/E08QL_libTsAf.so:vendor/lib/E08QL_libTsAf.so
-lib/E08QL_libTs_J_Accm.so:vendor/lib/E08QL_libTs_J_Accm.so
-lib/E08QL_libTs_J_Awb.so:vendor/lib/E08QL_libTs_J_Awb.so
-lib/libmmcamera2_stats_algorithm.so:vendor/lib/libmmcamera2_stats_algorithm.so
-lib/libmmcamera_fidelix_eeprom.so:vendor/lib/libmmcamera_fidelix_eeprom.so
-vendor/lib/libmmcamera2_iface_modules.so
-vendor/lib/libmmcamera2_imglib_modules.so
-vendor/lib/libmmcamera2_isp_modules.so
-vendor/lib/libmmcamera2_sensor_modules.so
-vendor/lib/libmmcamera2_stats_modules.so
-vendor/lib/libmmcamera_imx175.so
-vendor/lib/libmmcamera_s5k4h5yb.so
-vendor/lib/liboemcamera.so
+# Samsung Camera Specific Blobs - Pinned to Samsung sensor specific files
+lib/E08QL_libTsAe.so:vendor/lib/E08QL_libTsAe.so|b26488bba1d9a408794ffeef99b334d710abde69
+lib/E08QL_libTsAf.so:vendor/lib/E08QL_libTsAf.so|1cb71e8b40435075deaebe11faeb5e8e2b4a338f
+lib/E08QL_libTs_J_Accm.so:vendor/lib/E08QL_libTs_J_Accm.so|25c0090e2c0e59488a2b05401b24efa6609e9e77
+lib/E08QL_libTs_J_Awb.so:vendor/lib/E08QL_libTs_J_Awb.so|5b96eef8ba294f0b58c20034599135660c8506a9
+lib/libmmcamera2_stats_algorithm.so:vendor/lib/libmmcamera2_stats_algorithm.so|b874bf52fa6071ea8bd114444bb734b8dd6a7a6e
+lib/libmmcamera_fidelix_eeprom.so:vendor/lib/libmmcamera_fidelix_eeprom.so|e6d13ab8c745dfa33cbeb94c936c3e4807c34630
+vendor/lib/libmmcamera2_iface_modules.so|88e17a3f7ebb0dfa1ca93a8f1e53d541c000c136
+vendor/lib/libmmcamera2_imglib_modules.so|b965b187eee18b241474cc0257e2352f26c748fe
+vendor/lib/libmmcamera2_isp_modules.so|f23bc7e54336375b0cbcda8e66a0146779fa9937
+vendor/lib/libmmcamera2_sensor_modules.so|cffd7b905fbb7faa1507a5916d72f213b13eb1b7
+vendor/lib/libmmcamera2_stats_modules.so|77cb73b4e890b3956f8a6b5add9a4b545041abe9
+vendor/lib/libmmcamera_imx175.so|0bd21a0f983f5ef35b60c0735ad6b32adde0d8a7
+vendor/lib/libmmcamera_s5k4h5yb.so|b8d118950ce792a45f12bfdf40b616d821b0485d
+vendor/lib/liboemcamera.so|fd4d66850813bea498b052294a76467d6c5b6e26
 
 # Camera chromatix - Pinned to RoX CyanongenMOD 11 were specified
 lib/libAfSingle.so:vendor/lib/libAfSingle.so
@@ -124,8 +124,8 @@ vendor/lib/libchromatix_s5k6a3yx_snapshot.so|e69c9bfef3fc042cc12954ec77b6544ff85
 vendor/lib/libchromatix_s5k6a3yx_video_hd.so|1458657bc9414a2a0c613d50f9278ce430a6440e
 vendor/lib/libchromatix_s5k6a3yx_zsl.so|37e10556d024e4f4fc0f6e8ecee47c84fd7f49d7
 
-# Samsung Camera chromatix specific blobs - Pinned to RoX CyanongenMOD 11 were specified
-lib/libTs_J_Awb.so:vendor/lib/libTs_J_Awb.so
+# Samsung Camera chromatix specific blobs - Pinned to Samsung sensor specific files
+lib/libTs_J_Awb.so:vendor/lib/libTs_J_Awb.so|5b96eef8ba294f0b58c20034599135660c8506a9
 
 # Camera firmware
 etc/B08QT_imx175_module_info.xml
@@ -202,8 +202,8 @@ bin/rmt_storage:vendor/bin/rmt_storage|000ddcabfc9416e9a27ba6d04860cc14b6803cdd
 vendor/lib/libril-qcril-hook-oem.so|6a73ed46f4fbcb283eea5fb44b24a7d14522bfe5
 lib/libsec-ril.so:vendor/lib/libsec-ril.gsm.so|075570a628f465f92f3067afcefb6938d4e5dc3a
 
-# Sensors
-lib/hw/sensors.msm8226.so:vendor/lib/sensors.msm8226.so
+# Sensors - Pinned to Samsung Galaxy S5 Mini G800HXXU1CQC1_G800HXEO1CQB1
+lib/hw/sensors.vendor.msm8226.so:vendor/lib/sensors.vendor.msm8226.so|4d43b8f058b6a6b788ff1c84c494d651dad31c68
 lib/libyasalgo.so:vendor/lib/libyasalgo.so
 
 # Time services - Pinned to Samsung Galaxy S5 G900FXXU1CRH1_G900FOXA1CRH1_BTU

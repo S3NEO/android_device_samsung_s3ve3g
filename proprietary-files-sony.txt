@@ -69,21 +69,21 @@ vendor/lib/libmmqjpeg_codec.so|f3f79e6c709bf65240d8775074bc4aa682e6c41e
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 
-# Sony Camera Specific Blobs - Pinned to RoX CyanongenMOD 11 were specified
-lib/B08QT_libTsAe.so:vendor/lib/B08QT_libTsAe.so
-lib/B08QT_libTsAf.so:vendor/lib/B08QT_libTsAf.so
-lib/B08QT_libTs_J_Accm.so:vendor/lib/B08QT_libTs_J_Accm.so
-lib/B08QT_libTs_J_Awb.so:vendor/lib/B08QT_libTs_J_Awb.so
-lib/libmmcamera2_stats_algorithm.so:vendor/lib/libmmcamera2_stats_algorithm.so|991bb5502d5a110844ca64fdc55c3da6c0bad50b
-lib/libmmcamera_fidelix_eeprom.so:vendor/lib/libmmcamera_fidelix_eeprom.so|7a93851ffdd4f29c3bfc80100e6a5199f8c29e7b
-vendor/lib/libmmcamera2_iface_modules.so|a6cd393153dcf443667590c30acd0f306bea05ab
-vendor/lib/libmmcamera2_imglib_modules.so|3f0a479a82760563e23ccbb54ac2c7ae5c5a8bd1
-vendor/lib/libmmcamera2_isp_modules.so|cc979768050267a17b46c6bae0cbf80f0c0f22bb
-vendor/lib/libmmcamera2_sensor_modules.so|6495090097a75bdf597d9508400389388609f549
-vendor/lib/libmmcamera2_stats_modules.so|eed9284774a6d417b5c27e6e5c18813373150f57
+# Sony Camera Specific Blobs - Pinned to Sony sensor specific files 
+lib/B08QT_libTsAe.so:vendor/lib/B08QT_libTsAe.so|b26488bba1d9a408794ffeef99b334d710abde69
+lib/B08QT_libTsAf.so:vendor/lib/B08QT_libTsAf.so|3d006b74c809aae094deb069a0ef29db4728f585
+lib/B08QT_libTs_J_Accm.so:vendor/lib/B08QT_libTs_J_Accm.so|25c0090e2c0e59488a2b05401b24efa6609e9e77
+lib/B08QT_libTs_J_Awb.so:vendor/lib/B08QT_libTs_J_Awb.so|50e98007d1eac87bbcbd5756a1111aa789425aec
+lib/libmmcamera2_stats_algorithm.so:vendor/lib/libmmcamera2_stats_algorithm.so|2dacf8ed67a02b27592eaec8ad8fb9b5de767ed4
+lib/libmmcamera_fidelix_eeprom.so:vendor/lib/libmmcamera_fidelix_eeprom.so|d3e43f57e959efe4ce2fd67493677629fb730d00
+vendor/lib/libmmcamera2_iface_modules.so|008da58c27bb27bdee46316bd673990c72069fbc
+vendor/lib/libmmcamera2_imglib_modules.so|0fd2ece2b02f41fe143c15941c9d4f157351d93f
+vendor/lib/libmmcamera2_isp_modules.so|0cc1884257662b0a13b0331785af0356d42f7f44
+vendor/lib/libmmcamera2_sensor_modules.so|cf5ae9f20e3748421909052a41aba34f13014165
+vendor/lib/libmmcamera2_stats_modules.so|6d6b09bb62a66931468e63d724e6fa643d92e27e
 vendor/lib/libmmcamera_imx175.so|0bd21a0f983f5ef35b60c0735ad6b32adde0d8a7
-vendor/lib/libmmcamera_s5k4h5yb.so|9bc4f4e0ba06163077807cbede3ed8cad1268764
-vendor/lib/liboemcamera.so|8800dcd9915c6b3d733d4abb9d44d892b34a85b3
+vendor/lib/libmmcamera_s5k4h5yb.so|935a9c73498a3ea3fad4f44aa5b5d1b36323b927
+vendor/lib/liboemcamera.so|24008376a6d58ccb2775a177a78cd2e86ba576d4
 
 # Camera chromatix - Pinned to RoX CyanongenMOD 11 were specified
 lib/libAfSingle.so:vendor/lib/libAfSingle.so
@@ -124,8 +124,8 @@ vendor/lib/libchromatix_s5k6a3yx_snapshot.so|e69c9bfef3fc042cc12954ec77b6544ff85
 vendor/lib/libchromatix_s5k6a3yx_video_hd.so|1458657bc9414a2a0c613d50f9278ce430a6440e
 vendor/lib/libchromatix_s5k6a3yx_zsl.so|37e10556d024e4f4fc0f6e8ecee47c84fd7f49d7
 
-# Sony Camera chromatix specific blobs - Pinned to RoX CyanongenMOD 11 were specified
-lib/libTs_J_Awb.so:vendor/lib/libTs_J_Awb.so
+# Sony Camera chromatix specific blobs - Pinned to Sony sensor specific files
+lib/libTs_J_Awb.so:vendor/lib/libTs_J_Awb.so|50e98007d1eac87bbcbd5756a1111aa789425aec
 
 # Camera firmware
 etc/B08QT_imx175_module_info.xml
@@ -202,8 +202,8 @@ bin/rmt_storage:vendor/bin/rmt_storage|000ddcabfc9416e9a27ba6d04860cc14b6803cdd
 vendor/lib/libril-qcril-hook-oem.so|6a73ed46f4fbcb283eea5fb44b24a7d14522bfe5
 lib/libsec-ril.so:vendor/lib/libsec-ril.gsm.so|075570a628f465f92f3067afcefb6938d4e5dc3a
 
-# Sensors
-lib/hw/sensors.msm8226.so:vendor/lib/sensors.vendor.msm8226.so
+# Sensors - Pinned to Samsung Galaxy S5 Mini G800HXXU1CQC1_G800HXEO1CQB1
+lib/hw/sensors.vendor.msm8226.so:vendor/lib/sensors.vendor.msm8226.so|4d43b8f058b6a6b788ff1c84c494d651dad31c68
 lib/libyasalgo.so:vendor/lib/libyasalgo.so
 
 # Time services - Pinned to Samsung Galaxy S5 G900FXXU1CRH1_G900FOXA1CRH1_BTU
