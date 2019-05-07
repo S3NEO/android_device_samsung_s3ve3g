@@ -88,6 +88,7 @@ void init_variant_properties() {
         property_override("ro.telephony.default_network", "9");
 	property_override("telephony.lteOnGsmDevice", "1");
     }
+    property_override("ro.revision", "4");
 }
 
 
