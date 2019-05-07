@@ -203,7 +203,7 @@ vendor/lib/libril-qcril-hook-oem.so|6a73ed46f4fbcb283eea5fb44b24a7d14522bfe5
 lib/libsec-ril.so:vendor/lib/libsec-ril.gsm.so|075570a628f465f92f3067afcefb6938d4e5dc3a
 
 # Sensors
-lib/hw/sensors.msm8226.so:vendor/lib/sensors.msm8226.so
+lib/hw/sensors.msm8226.so:vendor/lib/sensors.vendor.msm8226.so
 lib/libyasalgo.so:vendor/lib/libyasalgo.so
 
 # Time services - Pinned to Samsung Galaxy S5 G900FXXU1CRH1_G900FOXA1CRH1_BTU
