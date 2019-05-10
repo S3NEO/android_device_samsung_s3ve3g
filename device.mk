@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8226 \
+    lights.MSM8226 \
     android.hardware.light@2.0-impl
 
 # Media
