@@ -30,6 +30,8 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Camera
 TARGET_HAS_SONY_CAMERA := true
+TARGET_LD_SHIM_LIBS += \
+    /system/vendor/lib/libmmcamera_imx175.so|libimx175_shim.so
 
 # Radio
 SIM_COUNT := 1
