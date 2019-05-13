@@ -32,6 +32,11 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 TARGET_HAS_SONY_CAMERA := true
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libmmcamera_imx175.so|libimx175_shim.so
+    
+# FM
+AUDIO_FEATURE_ENABLED_FM := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+BOARD_HAVE_QCOM_FM := true    
 
 # Radio
 SIM_COUNT := 1
