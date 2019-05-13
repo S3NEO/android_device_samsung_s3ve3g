@@ -53,6 +53,9 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
+    
+# NFC
+$(call inherit-product, device/samsung/s3ve3g/nfc/pn547/product.mk)    
 
 # Permissions
 PRODUCT_COPY_FILES += \

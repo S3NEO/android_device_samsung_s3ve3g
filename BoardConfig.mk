@@ -53,6 +53,9 @@ TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := lineageos_s3ve3g_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage
 
+# NFC
+include device/samsung/s3ve3g/nfc/pn547/board.mk
+
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
