@@ -12,13 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
-# Proprietary files
-$(call inherit-product, vendor/samsung/s3ve3g/s3ve3g-vendor.mk)
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720   
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -35,7 +38,28 @@ PRODUCT_COPY_FILES += \
     
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl-legacy \
+    camera.device@1.0-impl-legacy \
+    libboringssl-compat \
+    camera.msm8226 \
+    libxml2 \
+    Snap
+
+ifeq ($(TARGET_HAS_SONY_CAMERA),true)
+PRODUCT_PACKAGES += \
     libshim_imx175
+endif  
+
+# CRDA
+PRODUCT_PACKAGES += \
+    crda \
+    linville.key.pub.pem \
+    regdbdump \
+    regulatory.bin    
+    
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi    
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -49,6 +73,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
+    
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc        
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -68,25 +98,42 @@ PRODUCT_COPY_FILES += \
 # NFC
 $(call inherit-product, device/samsung/s3ve3g/nfc/pn547/product.mk)    
 
+
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
+# Radio
+PRODUCT_PACKAGES += \
+    libsecnativefeature
+    
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc   
-    
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8226
     
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/sensors/_hals.conf::$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch   
     
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8226.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-8226.conf
+    
+# Vibrator
+PRODUCT_PACKAGES += \
+	android.hardware.vibrator@1.0-impl    
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -95,6 +142,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+    
+# Get non-open-source specific aspects
+$(call inherit-product-if-exists, vendor/samsung/s3ve3g/s3ve3g-vendor.mk)    
 
-# Inherit from qcom-common
+# common msm8226
 $(call inherit-product, device/samsung/msm8226-common/msm8226.mk)
