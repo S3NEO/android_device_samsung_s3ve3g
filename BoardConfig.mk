@@ -16,11 +16,11 @@
 # Inherit from common msm8226
 -include device/samsung/msm8226-common/BoardConfigCommon.mk
 
+TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
+
 DEVICE_PATH := device/samsung/s3ve3g
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
-
-TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
 
 # Audio
 USE_CUSTOM_AUDIO_POLICY := 1
@@ -29,25 +29,39 @@ USE_CUSTOM_AUDIO_POLICY := 1
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8226
+
+# Build
+BLOCK_BASED_OTA := true
 
 # Camera
 TARGET_HAS_SONY_CAMERA := true
+#TARGET_HAS_SAMSUNG_CAMERA := true
+USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
+ifeq ($(TARGET_HAS_SONY_CAMERA),true)
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libmmcamera_imx175.so|libimx175_shim.so
+endif
+
+# Extended Filesystem Support
+TARGET_EXFAT_DRIVER := sdfat
     
 # FM
 AUDIO_FEATURE_ENABLED_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
-BOARD_HAVE_QCOM_FM := true    
-
-# Radio
-SIM_COUNT := 1
-#TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
-#TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
+BOARD_HAVE_QCOM_FM := true  
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_s3ve3g
 TARGET_UNIFIED_DEVICE := true
+
+# NFC
+include $(DEVICE_PATH)/nfc/pn547/board.mk
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
@@ -56,28 +70,36 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardwa
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
 TARGET_KERNEL_CONFIG := lineageos_s3ve3g_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage
 
-# NFC
-include device/samsung/s3ve3g/nfc/pn547/board.mk
-
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
-#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_CACHEIMAGE_PARTITION_SIZE := 721420288
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
 TARGET_USERIMAGES_USE_F2FS := true
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Power HAL
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/s3ve3g/power/power_ext.c
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(DEVICE_PATH)/power/power_ext.c
 TARGET_POWERHAL_VARIANT := qcom
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+# Radio
+BOARD_PROVIDES_LIBRIL := true
+TARGET_RIL_VARIANT := caf
+SIM_COUNT := 1
+#TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
+#TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
@@ -85,5 +107,27 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
-# Build
-BLOCK_BASED_OTA := true
+# Sensors
+TARGET_NO_SENSOR_PERMISSION_CHECK := true 
+
+# Use Snapdragon LLVM if available on build server
+TARGET_USE_SDCLANG := true
+
+# Wifi
+BOARD_HAVE_SAMSUNG_WIFI := true
+BOARD_HAS_QCOM_WLAN              := true
+BOARD_HAS_QCOM_WLAN_SDK          := true
+BOARD_WLAN_DEVICE                := qcwcn
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+TARGET_PROVIDES_WCNSS_QMI        := true
+TARGET_USES_QCOM_WCNSS_QMI       := true
+TARGET_USES_WCNSS_CTRL           := true
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
+
+# inherit from the proprietary version
+-include vendor/samsung/s3ve3g/BoardConfigVendor.mk
