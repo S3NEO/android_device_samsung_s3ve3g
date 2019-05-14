@@ -42,13 +42,9 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl-legacy \
     libboringssl-compat \
     camera.msm8226 \
+    libshim_imx175 \
     libxml2 \
     Snap
-
-ifeq ($(TARGET_HAS_SONY_CAMERA),true)
-PRODUCT_PACKAGES += \
-    libshim_imx175
-endif  
 
 # CRDA
 PRODUCT_PACKAGES += \
@@ -133,7 +129,7 @@ PRODUCT_COPY_FILES += \
     
 # Vibrator
 PRODUCT_PACKAGES += \
-	android.hardware.vibrator@1.0-impl    
+     android.hardware.vibrator@1.0-impl    
 
 # Wifi
 PRODUCT_COPY_FILES += \
