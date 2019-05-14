@@ -1,2 +1,93 @@
+# Art
+dalvik.vm.dex2oat-swap=false
+
+# Audio
+af.fast_track_multiplier=1
+audio_hal.period_size=192
+audio.offload.video=true
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+ro.qc.sdk.audio.fluencetype=fluence
+use.voice.path.for.pcm.voip=false
+use.dedicated.device.for.voip=true
+audio.deep_buffer.media=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+audio.offload.multiple.enabled=false
+
+# Bluetooth
+qcom.bluetooth.soc=smd
+qcom.bt.le_dev_pwr_class=1
+ro.qualcomm.bluetooth.opp=true
+ro.qualcomm.bluetooth.hfp=true
+ro.qualcomm.bluetooth.hsp=true
+ro.qualcomm.bluetooth.pbap=true
+ro.qualcomm.bluetooth.ftp=true
+ro.qualcomm.bluetooth.nap=true
+ro.qualcomm.bluetooth.map=true
+ro.bluetooth.sap=true
+ro.bluetooth.dun=true
+ro.bluetooth.hfp.ver=1.6
+ro.qualcomm.bt.hci_transport=smd
+
+# Camera / Media
+camera2.portability.force_api=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+persist.media.treble_omx=false
+
+# Display
+ro.hdcp2.rx=tz
+ro.qualcomm.cabl=0
+ro.secwvk=144
+ro.sf.lcd_density=320
+debug.hwui.use_buffer_age=false
+
+# Memory optimizations
+ro.vendor.qti.am.reschedule_service=true
+
+# GPS
+persist.gps.qc_nlp_in_use=1
+ro.gps.agps_provider=1
+ro.qc.sdk.izat.premium_enabled=0
+ro.qc.sdk.izat.service_mask=0x0
+
+# IO Scheduler
+sys.io.scheduler=bfq
+
+# NFC
+ro.nfc.port=I2C
+
 # Radio
+persist.data.netmgrd.qos.enable=true
+persist.data.qmi.adb_logmask=0
+persist.radio.add_power_save=1
+ro.telephony.ril.config=simactivation
+rild.libargs=-d /dev/smd0
+rild.libpath=/system/vendor/lib/libsec-ril.so
+ro.telephony.mms_data_profile=5
+ro.ril.telephony.qan_resp_strings=6
 telephony.lteOnGsmDevice=0
+
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+ro.telephony.call_ring.multiple=0
+
+# Subsystem
+persist.sys.ssr.enable_debug=1
+
+# Sensors
+ro.qc.sdk.gestures.camera=false
+ro.qc.sdk.camera.facialproc=false
+ro.qc.sdk.sensors.gestures=true
+debug.sensors=1
+
+# Tethering
+net.tethering.noprovisioning=true
+
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2017-08-01
+
+# Wi-Fi
+ro.disableWifiApFirmwareReload=true
+wifi.interface=wlan0
