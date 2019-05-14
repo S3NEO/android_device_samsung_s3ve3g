@@ -18,18 +18,11 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Galaxy S3 Neo"
+#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy S III Neo"
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 
 #define BTM_WBS_INCLUDED TRUE       /* Enable WBS */
 #define BTIF_HF_WBS_PREFERRED TRUE /* Use WBS    */
-
-#define BLUETOOTH_QTI_SW TRUE
-// Disables read remote device feature
-#define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
-#define MAX_L2CAP_CHANNELS 16
-// skips conn update at conn completion
-#define BTA_BLE_SKIP_CONN_UPD FALSE
 
 #define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
 
