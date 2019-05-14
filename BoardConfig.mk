@@ -39,6 +39,7 @@ BLOCK_BASED_OTA := true
 # Camera
 TARGET_HAS_SONY_CAMERA := true
 #TARGET_HAS_SAMSUNG_CAMERA := true
+TARGET_USES_NON_TREBLE_CAMERA := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
@@ -46,9 +47,6 @@ ifeq ($(TARGET_HAS_SONY_CAMERA),true)
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libmmcamera_imx175.so|libimx175_shim.so
 endif
-
-# Extended Filesystem Support
-TARGET_EXFAT_DRIVER := sdfat
     
 # FM
 AUDIO_FEATURE_ENABLED_FM := true
