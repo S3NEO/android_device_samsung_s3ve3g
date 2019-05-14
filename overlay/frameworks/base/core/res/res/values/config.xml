@@ -248,6 +248,7 @@
         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <integer name="config_longPressOnHomeBehavior">2</integer>    
+    <integer name="config_longPressOnMenuBehavior">1</integer>
 
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
