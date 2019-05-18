@@ -25,4 +25,4 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/samsung/s3ve3g/nfc/pn547/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     device/samsung/s3ve3g/nfc/pn547/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
-    device/samsung/s3ve3g/nfc/pn547/nfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/nfc-nci.conf 
+    device/samsung/s3ve3g/nfc/pn547/nfc-nci.conf:system/etc/nfc-nci.conf 
