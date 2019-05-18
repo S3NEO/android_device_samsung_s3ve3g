@@ -13,4 +13,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_s3ve3g.mk
+    $(LOCAL_DIR)/full_s3ve3g.mk
