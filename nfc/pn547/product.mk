@@ -21,6 +21,7 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl \
     libpn547_fw \
     libpn547_fw_pku \
+    libpn547_fw_platform \
     nfc_nci.msm8226
 
 PRODUCT_COPY_FILES += \
