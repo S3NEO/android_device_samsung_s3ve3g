@@ -35,8 +35,8 @@ on post-fs-data
 
 on boot
     # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
+    mkdir /data/nfc 0777 nfc nfc
+    mkdir /data/nfc/param 0777 nfc nfc
 
     # NFC_NXP
     setprop ro.nfc.port "I2C"
