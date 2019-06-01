@@ -45,9 +45,6 @@ PRODUCT_PACKAGES += \
     libshim_imx175 \
     libxml2 \
     Snap
-    
-TARGET_HAS_SONY_CAMERA := true    
-#TARGET_HAS_SAMSUNG_CAMERA := true
 
 # CRDA
 PRODUCT_PACKAGES += \
