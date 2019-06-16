@@ -22,11 +22,11 @@ PRODUCT_PACKAGES += \
     libpn547_fw \
     libpn547_fw_pku \
     libpn547_fw_platform \
-    nfc_nci.msm8226
+    nfc_nci.pn54x
 
 PRODUCT_COPY_FILES += \
-    device/samsung/s3ve3g/nfc/pn547/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
-    device/samsung/s3ve3g/nfc/pn547/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+    device/samsung/s3ve3g/nfc/pn547/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/samsung/s3ve3g/nfc/pn547/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=pn54x
+    ro.hardware.nfc_nci=pn54x 
