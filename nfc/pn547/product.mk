@@ -29,4 +29,5 @@ PRODUCT_COPY_FILES += \
     device/samsung/s3ve3g/nfc/pn547/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=pn54x 
+    ro.hardware.nfc_nci=pn54x \
+    ro.nfc.port=I2C
