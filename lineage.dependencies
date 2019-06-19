@@ -7,4 +7,8 @@
     "repository": "android_kernel_samsung_s3ve3g",
     "target_path": "kernel/samsung/s3ve3g"
   }
+  {
+    "repository": "android_packages_apps_FlipFlap",
+    "target_path": "packages/apps/FlipFlap"
+  }  
 ]
