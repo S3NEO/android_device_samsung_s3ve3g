@@ -37,7 +37,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
     
 # Camera
-TARGET_HAS_SONY_CAMERA ?= true
+TARGET_HAS_SAMSUNG_CAMERA ?= true
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-legacy \
